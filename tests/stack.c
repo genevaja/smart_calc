@@ -1,4 +1,4 @@
-#include "prepare.h"
+#include "../prepare.h"
 
 int main() {
   int exit_code = SUCCESS;

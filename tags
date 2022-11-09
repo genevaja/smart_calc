@@ -8,12 +8,15 @@ FAILURE	prepare.h	9;"	d
 FAILURE	stack.c	9;"	d	file:
 MAX_BUF	prepare.h	5;"	d
 MAX_BUF	stack.c	5;"	d	file:
+SOURCES	Makefile	/^SOURCES="prepare.c"$/;"	m
 STACK_OVERFLOW	prepare.h	6;"	d
 STACK_OVERFLOW	stack.c	6;"	d	file:
 STACK_UNDERFLOW	prepare.h	7;"	d
 STACK_UNDERFLOW	stack.c	7;"	d	file:
 SUCCESS	prepare.h	8;"	d
 SUCCESS	stack.c	8;"	d	file:
+TEST_FOLD	Makefile	/^TEST_FOLD=".\/tests\/"$/;"	m
+TEST_SOURCES	Makefile	/^TEST_SOURCES = "${TEST_FOLD}stack.c"$/;"	m
 data	prepare.h	/^  char **data;$/;"	m	struct:stack_tag
 data	stack.c	/^  char **data;$/;"	m	struct:stack_tag	file:
 free_stack	prepare.c	/^void free_stack(stack_t *stack) {$/;"	f
@@ -23,6 +26,7 @@ init_stack	stack.c	/^int init_stack(stack_t *stack) {$/;"	f
 input_text	prepare.c	/^char *input_text(char *a) {$/;"	f
 input_text	stack.c	/^char *input_text(char *a) {$/;"	f
 main	stack.c	/^int main() {$/;"	f
+main	tests/stack.c	/^int main() {$/;"	f
 mem_alloc	prepare.c	/^char **mem_alloc(void) {$/;"	f
 mem_alloc	stack.c	/^char **mem_alloc(void) {$/;"	f
 parse_push	prepare.c	/^int parse_push(stack_t *stack, const char *string) {$/;"	f
@@ -41,3 +45,4 @@ stack_t	prepare.h	/^} stack_t;$/;"	t	typeref:struct:stack_tag
 stack_t	stack.c	/^} stack_t;$/;"	t	typeref:struct:stack_tag	file:
 stack_tag	prepare.h	/^typedef struct stack_tag {$/;"	s
 stack_tag	stack.c	/^typedef struct stack_tag {$/;"	s	file:
+std	Makefile	/^	gcc -Wall -Wextra -Werror -g -std=c11 -c ${TEST_SOURCES}$/;"	m
