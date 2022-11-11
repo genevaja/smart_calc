@@ -12,9 +12,12 @@ BRC	common_fn.h	/^  BRC, \/\/ 8$/;"	e	enum:operations
 BRO	common_fn.h	/^  BRO, \/\/ 7$/;"	e	enum:operations
 COS	common_fn.h	/^  COS, \/\/ 14$/;"	e	enum:operations
 CTG	common_fn.h	/^  CTG, \/\/ 16$/;"	e	enum:operations
+DEFAULT	parser.c	12;"	d	file:
+DIGIT	parser.c	11;"	d	file:
 DIV	common_fn.h	/^  DIV, \/\/ 3$/;"	e	enum:operations
 FAILURE	common_fn.h	12;"	d
-LEXEME	common_fn.h	14;"	d
+LETTER	parser.c	10;"	d	file:
+LEXEME	common_fn.h	15;"	d
 LN	common_fn.h	/^  LN, \/\/ 12$/;"	e	enum:operations
 LOG	common_fn.h	/^  LOG, \/\/ 11$/;"	e	enum:operations
 MAX_BUF	common_fn.h	8;"	d
@@ -35,6 +38,8 @@ SUM	common_fn.h	/^  SUM = 0,$/;"	e	enum:operations
 TAN	common_fn.h	/^  TAN, \/\/ 15$/;"	e	enum:operations
 TEST_FOLD	Makefile	/^TEST_FOLD=".\/tests\/"$/;"	m
 TEST_SOURCES	Makefile	/^TEST_SOURCES = "${TEST_FOLD}stack.c"$/;"	m
+WRONG_EXPRESSION	common_fn.h	13;"	d
+check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f
 data	common_fn.h	/^  char **data;$/;"	m	struct:stack_tag
 free_stack	common_fn.c	/^void free_stack(stack_t *stack) {$/;"	f
 fsanitize	Makefile	/^	gcc *.o -o a.out -fsanitize=address$/;"	m

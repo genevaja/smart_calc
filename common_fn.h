@@ -10,9 +10,10 @@
 #define STACK_UNDERFLOW -101
 #define SUCCESS 0
 #define FAILURE 1
+#define WRONG_EXPRESSION 2
 
 #define LEXEME {"log", "ln", "sin", "cos", "tan", "ctg", "acos", "asin", "atan", \
-                "actg", "(", ")", "/", "*", "+", "-", "sqrt", "mod", "%", "^" }
+                "actg", "(", ")", "/", "*", "+", "-", "sqrt", "mod", "%", "^", "x", "y", "z" }
 
 enum operations {
   SUM = 0,
