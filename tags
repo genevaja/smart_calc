@@ -49,7 +49,6 @@ letter_check	parser.c	/^int letter_check(char letter) {$/;"	f
 main	tests/stack.c	/^int main() {$/;"	f
 mem_alloc	common_fn.c	/^char **mem_alloc(void) {$/;"	f
 operations	common_fn.h	/^enum operations {$/;"	g
-parse_push	common_fn.c	/^int parse_push(stack_t *stack, const char *string) {$/;"	f
 parser	parser.c	/^int parser(stack_t *stack, char *string) {$/;"	f
 pop	common_fn.c	/^int pop(stack_t *stack, char *value) {$/;"	f
 priority_op	notation.c	/^int priority_op(int operation) {$/;"	f

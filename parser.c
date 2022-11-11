@@ -14,13 +14,13 @@
 
 int letter_check(char letter) {
   int exit_code = FAILURE;
-  int spec_symbol[] = {40, 41, 42, 43, 45, 47, 94};
   int L_start = 65, L_end = 90;
   int l_start = 97, l_end = 122;
   if ((letter >= L_start && letter <= L_end) ||
       (letter >= l_start && letter <= l_end)) {
     exit_code = SUCCESS;
   } else {
+    int spec_symbol[] = {40, 41, 42, 43, 45, 47, 94};
     for (int i = 0; i < (int)(sizeof(spec_symbol)/4); i++) {
       if (letter == spec_symbol[i]) {
         exit_code = SUCCESS;
@@ -45,8 +45,8 @@ int parser(stack_t *stack, char *string) {
   int exit_code = SUCCESS;
   char *lexemes[] = LEXEME;
   // Сначала сбрасываем счётчик стека
-  if (stack->size != 0)
-    stack->size = 0;
+  // if (stack->size != 0)
+  //   stack->size = 0;
   // Объявляем массив для извлечённой подстроки
   char sub_string[MAX_BUF] = {'\0'};
   size_t start = 0, i = 0;

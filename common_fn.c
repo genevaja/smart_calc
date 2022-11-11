@@ -80,17 +80,3 @@ void stack_output(stack_t *stack) {
   }
   putchar('\n');
 }
-
-int parse_push(stack_t *stack, const char *string) {
-  int exit_code = 0;
-  int counter = 0;
-  while (counter < (int)strlen(string)) {
-    // printf("Counter in while: %d\n", counter);
-    if (push(stack, simple_pars(string, &counter))) {
-      break;
-      exit_code = FAILURE;
-    }
-  }
-  return exit_code;
-}
-
