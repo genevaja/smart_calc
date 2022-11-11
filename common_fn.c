@@ -1,4 +1,4 @@
-#include "prepare.h"
+#include "common_fn.h"
 
 char *input_text(char *a) {
   char c;
@@ -41,7 +41,6 @@ int push(stack_t *stack, char *value) {
     return FAILURE;
   strcpy(stack->data[stack->size], value);
   stack->size++;
-  free(value);
   return SUCCESS;
 }
 
@@ -94,3 +93,4 @@ int parse_push(stack_t *stack, const char *string) {
   }
   return exit_code;
 }
+
