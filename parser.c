@@ -106,6 +106,7 @@ int parser(stack_t *stack, char *string) {
         continue;
     } else {
       // Если ни один символ не попадает в проверяемые диапазоны, возвращаем ошибку
+      // printf("Sub_string: %s\n", sub_string);
       exit_code = WRONG_EXPRESSION;
       break;
     }
