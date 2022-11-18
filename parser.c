@@ -20,7 +20,7 @@ int letter_check(char letter) {
       (letter >= l_start && letter <= l_end)) {
     exit_code = SUCCESS;
   } else {
-    int spec_symbol[] = {40, 41, 42, 43, 45, 47, 94};
+    int spec_symbol[] = {37, 40, 41, 42, 43, 45, 47, 94};
     for (int i = 0; i < (int)(sizeof(spec_symbol)/4); i++) {
       if (letter == spec_symbol[i]) {
         exit_code = SUCCESS;
