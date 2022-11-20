@@ -10,14 +10,14 @@ declare -a rand_fn=( "trig_fn" "math_fn" "variables" )
 
 
 
-for lines in {1..100}; do
+for lines in {1..1000}; do
     done_expr=""
     # Поменял на время 20 на 10
     memb_of_expr=$(( $RANDOM % 20 + 1))
     for (( j=0; j<$memb_of_expr; j++ )); do
-        rand_float="$(echo $(( $RANDOM % 10 )).$(( $RANDOM % 999 )))"
-        rand_float2="$(echo $(( $RANDOM % 10 )).$(( $RANDOM % 999 )))"
-        rand_int="$(echo $(( $RANDOM % 2000)))"
+        rand_float="$(echo $(( $RANDOM % 1 )).$(( $RANDOM % 999 )))"
+        rand_float2="$(echo $(( $RANDOM % 1 )).$(( $RANDOM % 999 )))"
+        rand_int="$(echo $(( $RANDOM % 1000)))"
         rand_int2="$(echo $(( $RANDOM % 1000)))"
         declare -a variables=( "$rand_float" "x" "$rand_float2" )
         if [[ $memb_of_expr -eq 1 ]]; then 
@@ -27,10 +27,10 @@ for lines in {1..100}; do
             break
         else
             if [[ $(($j % 2)) -eq 0 ]]; then
-                done_expr=$(printf "\"%s\", \"(\", \"%s\", \")\", " "${trig_fn[$RANDOM % ${#trig_fn[@]}]}" "$rand_float")
+                done_expr=$done_expr$(printf "\"%s\", \"(\", \"%s\", \")\", " "${trig_fn[$RANDOM % ${#trig_fn[@]}]}" "$rand_float")
             elif [[ $(($j % 4)) -eq 3 ]]; then
                 done_expr=$done_expr$(printf "\"%s\", \"%s\", \"(\", \"(\", \"%s\", \"%s\", \"%s\", \")\", `
-                                             `\"%s\", \"(\", \"%s\", \"%s\", \"%s\", \")\", \")\", " `
+                                             `\"%s\", \"(\", \"%s\", \"%s\", \"%s\", \")\", \")\", \"%s\", " `
                 `"${math_fn[$RANDOM % ${#math_fn[@]}]}" `
                 `"${trig_fn[$RANDOM % ${#trig_fn[@]}]}" `
                 `"$rand_float" `
@@ -39,8 +39,8 @@ for lines in {1..100}; do
                 `"${math_fn[$RANDOM % ${#math_fn[@]}]}" `
                 `"${variables[$RANDOM % ${#variables[@]}]}" `
                 `"${math_fn[$RANDOM % ${#math_fn[@]}]}" `
-                `"$rand_float")
-                # "${math_fn[$RANDOM % ${#math_fn[@]}]}" 
+                `"$rand_float" `
+                `"${math_fn[$RANDOM % ${#math_fn[@]}]}" )
             else
                 done_expr=$done_expr$(printf "\"%s\", " "${math_fn[$RANDOM % ${#math_fn[@]}]}")
                 if [[ $(($j + 1)) -eq $memb_of_expr ]]; then
