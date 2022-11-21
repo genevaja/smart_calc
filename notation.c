@@ -20,3 +20,7 @@ int priority_op(int operation) {
       printf("Error in priority: %d\n", operation);
   return priority;
 }
+
+int notation(stack_t *stack) {
+
+}

@@ -58,6 +58,9 @@ int parse_push(stack_t *stack, const char *string);
 // Приоритеты для лексем
 int priority_op(int operation);
 
+// Парсер математических выражений
 int parser(stack_t *stack, char *string);
+
+int notation(stack_t *stack);
 
 #endif

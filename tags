@@ -43,6 +43,7 @@ SQRT	common_fn.h	/^  SQRT, \/\/ 6$/;"	e	enum:operations
 SRC_COMMON_FN_H_	common_fn.h	2;"	d
 STACK_OVERFLOW	common_fn.h	9;"	d
 STACK_UNDERFLOW	common_fn.h	10;"	d
+START_TEST	tests/notation_test.c	/^START_TEST(notation_1) {$/;"	f
 START_TEST	tests/parser_test.c	/^START_TEST(parser_1) {$/;"	f
 START_TEST	tests/parser_test.c	/^START_TEST(parser_10) {$/;"	f
 START_TEST	tests/parser_test.c	/^START_TEST(parser_100) {$/;"	f
@@ -1058,10 +1059,11 @@ free_stack	common_fn.c	/^void free_stack(stack_t *stack) {$/;"	f
 init_stack	common_fn.c	/^int init_stack(stack_t *stack) {$/;"	f
 input_text	common_fn.c	/^char *input_text(char *a) {$/;"	f
 letter_check	parser.c	/^int letter_check(char letter) {$/;"	f
-main	polish.c	/^int main() {$/;"	f
+main	tests/notation_test.c	/^int main() {$/;"	f
 main	tests/parser_test.c	/^int main() {$/;"	f
 main	tests/temp/stack.c	/^int main() {$/;"	f
 mem_alloc	common_fn.c	/^char **mem_alloc(void) {$/;"	f
+notation	notation.c	/^int notation(stack_t *stack) {$/;"	f
 operations	common_fn.h	/^enum operations {$/;"	g
 parser	parser.c	/^int parser(stack_t *stack, char *string) {$/;"	f
 pop	common_fn.c	/^int pop(stack_t *stack, char *value) {$/;"	f
@@ -1069,6 +1071,7 @@ priority_op	notation.c	/^int priority_op(int operation) {$/;"	f
 push	common_fn.c	/^int push(stack_t *stack, char *value) {$/;"	f
 simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f
 size	common_fn.h	/^  int size;$/;"	m	struct:stack_tag
+sprintf_test	tests/notation_test.c	/^Suite * sprintf_test(void) {$/;"	f
 sprintf_test	tests/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
 stack_output	common_fn.c	/^void stack_output(stack_t *stack) {$/;"	f
 stack_t	common_fn.h	/^} stack_t;$/;"	t	typeref:struct:stack_tag
