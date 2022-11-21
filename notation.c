@@ -21,6 +21,6 @@ int priority_op(int operation) {
   return priority;
 }
 
-int notation(stack_t *stack) {
-
-}
+// int notation(stack_t *stack) {
+//   return 0;
+// }

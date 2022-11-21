@@ -1,5 +1,9 @@
 #include "common_fn.h"
 
+MEM_ALLOC(char, mem_alloc_char);
+MEM_ALLOC(double, mem_alloc_double);
+MEM_ALLOC(int, mem_alloc_int);
+
 char *input_text(char *a) {
   char c;
   int i = 0;
@@ -11,6 +15,7 @@ char *input_text(char *a) {
   }
   return a;
 }
+
 
 char **mem_alloc(void) {
   char **result = (char**)malloc(MAX_BUF * sizeof(char*));
@@ -24,7 +29,9 @@ char **mem_alloc(void) {
 
 int init_stack(stack_t *stack) {
   stack->size = 0;
-  stack->data = mem_alloc();
+  stack->data = mem_alloc_char(0);
+  stack->value = mem_alloc_double(1);
+  stack->keys = mem_alloc_int(2);
   return (stack->data) ? SUCCESS : FAILURE;
 }
 
@@ -33,6 +40,16 @@ void free_stack(stack_t *stack) {
     for (int i = 0; i < MAX_BUF; i++)
       free(stack->data[i]);
     free(stack->data);
+  }
+  if (stack->value) {
+    for (int i = 0; i < MAX_BUF; i++)
+      free(stack->value[i]);
+    free(stack->value);
+  }
+  if (stack->keys) {
+    for (int i = 0; i < MAX_BUF; i++)
+      free(stack->keys[i]);
+    free(stack->keys);
   }
 }
 
