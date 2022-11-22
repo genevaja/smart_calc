@@ -4,6 +4,10 @@ MEM_ALLOC(char, mem_alloc_char);
 MEM_ALLOC(double, mem_alloc_double);
 MEM_ALLOC(int, mem_alloc_int);
 
+PUSH_TO(char, push_char);
+PUSH_TO(double, push_value);
+PUSH_TO(int, push_keys);
+
 char *input_text(char *a) {
   char c;
   int i = 0;
@@ -52,6 +56,7 @@ void free_stack(stack_t *stack) {
     free(stack->keys);
   }
 }
+
 
 int push(stack_t *stack, char *value) {
   if (stack->size >= MAX_BUF || value == NULL)

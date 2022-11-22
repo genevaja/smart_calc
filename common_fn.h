@@ -12,6 +12,17 @@
 #define SUCCESS 0
 #define FAILURE 1
 #define WRONG_EXPRESSION 2
+#define CHAR_T 0
+#define DOUBLE_T 1
+#define INT_T 2
+
+typedef struct stack_tag {
+  char **data;
+  int **keys; 
+  double **value;
+  int size;
+} stack_t;
+
 
 #define MEM_ALLOC(TYPE, FUNNAME) \
   TYPE **FUNNAME(int k) {\
@@ -29,6 +40,21 @@
     }\
     return result;\
   }
+
+#define PUSH_TO(TYPE, FUNNAME) \
+  int FUNNAME(stack_t *stack, TYPE *value, int type) {\
+    if (stack->size >= MAX_BUF || value == NULL)\
+      return FAILURE;\
+    if (type == CHAR_T)\
+      strcpy(stack->data[stack->size], value);\
+    else if (type == DOUBLE_T)\
+      stack->value[stack->size] = value;\
+    else if (type == INT_T)\
+      stack->keys[stack->size] = value;\
+    stack->size++;\
+    return SUCCESS;\
+  }
+
 
 
 #define LEXEME {"log", "ln", "sin", "cos", "tan", "ctg", "acos", "asin", "atan", \
@@ -62,12 +88,6 @@ enum operations {
 };
 
 
-typedef struct stack_tag {
-  char **data;
-  int **keys; 
-  double **value;
-  int size;
-} stack_t;
 
 char *input_text(char *a);
 char **mem_alloc(void);
@@ -92,5 +112,11 @@ int notation(stack_t *stack);
 char **mem_alloc_char(int);
 double **mem_alloc_double(int);
 int **mem_alloc_int(int);
+
+int push_char(stack_t *stack, char *value, int);
+int push_value(stack_t *stack, double *value, int);
+int push_char(stack_t *stack, char *value, int);
+
+
 
 #endif

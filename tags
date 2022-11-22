@@ -13,6 +13,7 @@ BRC	common_fn.h	/^  BRC, \/\/ 8$/;"	e	enum:operations
 BRO	common_fn.h	/^  BRO, \/\/ 7$/;"	e	enum:operations
 CC	Makefile	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror -g -std=c11 -lm$/;"	m
+CHAR_T	common_fn.h	15;"	d
 CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lm -lpthread$/;"	m
 CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lpthread -lrt -lm -lsubunit$/;"	m
 COS	common_fn.h	/^  COS, \/\/ 14$/;"	e	enum:operations
@@ -20,11 +21,13 @@ CTG	common_fn.h	/^  CTG, \/\/ 16$/;"	e	enum:operations
 DEFAULT	parser.c	12;"	d	file:
 DIGIT	parser.c	11;"	d	file:
 DIV	common_fn.h	/^  DIV, \/\/ 3$/;"	e	enum:operations
+DOUBLE_T	common_fn.h	16;"	d
 FAILURE	common_fn.h	13;"	d
 GCOV_FLAGS	Makefile	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 INCL_LIB	Makefile	/^INCL_LIB = -L.$/;"	m
+INT_T	common_fn.h	17;"	d
 LETTER	parser.c	10;"	d	file:
-LEXEME	common_fn.h	34;"	d
+LEXEME	common_fn.h	60;"	d
 LIB_NAME	Makefile	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_OBJS	Makefile	/^LIB_OBJS := $(LIB_SRC:$(SOURCE_DIR)\/%.c=%.o)$/;"	m
 LIB_OUT	Makefile	/^LIB_OUT = libcalc_backend.a$/;"	m
@@ -32,13 +35,14 @@ LIB_SRC	Makefile	/^LIB_SRC := $(wildcard $(SOURCE_DIR)\/*.c)$/;"	m
 LN	common_fn.h	/^  LN, \/\/ 12$/;"	e	enum:operations
 LOG	common_fn.h	/^  LOG, \/\/ 11$/;"	e	enum:operations
 MAX_BUF	common_fn.h	9;"	d
-MEM_ALLOC	common_fn.h	16;"	d
+MEM_ALLOC	common_fn.h	27;"	d
 MINUS	common_fn.h	/^  MINUS, \/\/ undefined minus \/\/ 9$/;"	e	enum:operations
 MOD	common_fn.h	/^  MOD, \/\/ 4$/;"	e	enum:operations
 MUL	common_fn.h	/^  MUL, \/\/ 2$/;"	e	enum:operations
 NUMBER	common_fn.h	/^  NUMBER \/\/ 21$/;"	e	enum:operations
 PLUS	common_fn.h	/^  PLUS, \/\/ unary plus 10$/;"	e	enum:operations
 POW	common_fn.h	/^  POW, \/\/ 5$/;"	e	enum:operations
+PUSH_TO	common_fn.h	44;"	d
 SIN	common_fn.h	/^  SIN, \/\/ 13$/;"	e	enum:operations
 SOURCE_DIR	Makefile	/^SOURCE_DIR = .$/;"	m
 SQRT	common_fn.h	/^  SQRT, \/\/ 6$/;"	e	enum:operations
