@@ -34,9 +34,20 @@ int stack_init(math_fn *stack) {
   return exit_code;
 }
 
+void free_stack(math_fn *stack) {
+  if (stack->stack) {
+    for (int i = 0; i < MAX_BUF; i++) {
+      if (stack->stack[i].data)
+        free(stack->stack[i].data);
+    }
+    free(stack->stack);
+  }
+}
+
 int main() {
   int exit_code = SUCCESS;
   math_fn stack;
   exit_code = stack_init(&stack);
+  free_stack(&stack);
   return exit_code;
 }

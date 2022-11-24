@@ -1061,6 +1061,7 @@ WRONG_EXPRESSION	temp/common_fn.h	14;"	d
 check_dot	temp/parser.c	/^int check_dot(char *sub_string) {$/;"	f
 data	main.c	/^  char *data;$/;"	m	struct:stack_unit	file:
 data	temp/common_fn.h	/^  char **data;$/;"	m	struct:stack_tag
+free_stack	main.c	/^void free_stack(math_fn *stack) {$/;"	f
 free_stack	temp/common_fn.c	/^void free_stack(stack_t *stack) {$/;"	f
 init_stack	temp/common_fn.c	/^int init_stack(stack_t *stack) {$/;"	f
 input_text	temp/common_fn.c	/^char *input_text(char *a) {$/;"	f
