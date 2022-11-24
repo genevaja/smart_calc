@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm fn*.txt 2>/dev/null
-./math_fn.sh
+./math_fn.sh $1
 
 rm tests/parser_test.c
 
@@ -17,8 +17,8 @@ example=$(head -$i fn_str.txt | tail +$i)
     echo -e "
 START_TEST(parser_$i) {
   int exit_code = SUCCESS;
-  stack_t stack;
-  init_stack(&stack);
+  math_fn stack;
+  stack_init(&stack);
   char *string[] = {$string};
   char *example = {\"$example\"};
   exit_code = parser(&stack, example);
@@ -26,7 +26,7 @@ START_TEST(parser_$i) {
   ck_assert((int)sizeof(string)/8 == stack.size);
   if (((int)sizeof(string)/8) == stack.size) {
     for (int i = 0; i < stack.size; i++) {
-      ck_assert_int_eq(strcmp(string[i], stack.data[i]), 0);
+      ck_assert_int_eq(strcmp(string[i], stack.stack[i].data), 0);
     }
   }
   free_stack(&stack);

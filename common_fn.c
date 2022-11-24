@@ -1,9 +1,5 @@
 #include "common_fn.h"
 
-MEM_ALLOC(char, mem_alloc_char);
-// MEM_ALLOC(double, mem_alloc_double);
-// MEM_ALLOC(int, mem_alloc_int);
-
 char *input_text(char *a) {
   char c;
   int i = 0;
@@ -16,67 +12,50 @@ char *input_text(char *a) {
   return a;
 }
 
-
-char **mem_alloc(void) {
-  char **result = (char**)malloc(MAX_BUF * sizeof(char*));
-  for (int i = 0; i < MAX_BUF; i++) {
-    result[i] = (char*)malloc(MAX_BUF * sizeof(char));
-    for (int j = 0; j < MAX_BUF; j++)
-      result[i][j] = '\0';
-  }
-  return result;
-}
-
-double *mem_alloc_double(void) {
-  double *result = (double*)malloc(MAX_BUF * sizeof(double));
-  for (int i = 0; i < MAX_BUF; i++) {
-    result[i] = 0.0;
-  }
-  return result;
-}
-
-int *mem_alloc_int(void) {
-  int *result = (int*)malloc(MAX_BUF * sizeof(int));
-  for (int i = 0; i < MAX_BUF; i++) {
-    result[i] = 0;
-  }
-  return result;
-}
-
-int init_stack(stack_t *stack) {
+int stack_init(math_fn *stack) {
+  int exit_code = FAILURE;
   stack->size = 0;
-  stack->data = mem_alloc_char(0);
-  stack->value = mem_alloc_double();
-  stack->keys = mem_alloc_int();
-  return (stack->data) ? SUCCESS : FAILURE;
+  stack->stack = (stack_t*)malloc(MAX_BUF * sizeof(stack_t));
+  if (stack->stack) {
+    for (int i = 0; i < MAX_BUF; i++) {
+      stack->stack[i].data = (char*)malloc(MAX_BUF * sizeof(char));
+      stack->stack[i].value = 0.0;
+      stack->stack[i].keys = 0;
+      if (!stack->stack[i].data)
+        exit_code = FAILURE;
+      else
+        exit_code = SUCCESS;
+    }
+  }
+  return exit_code;
 }
 
-void free_stack(stack_t *stack) {
-  if (stack->data) {
-    for (int i = 0; i < MAX_BUF; i++)
-      free(stack->data[i]);
-    free(stack->data);
-  }
-  if (stack->value) {
-    free(stack->value);
-  }
-  if (stack->keys) {
-    free(stack->keys);
+void free_stack(math_fn *stack) {
+  if (stack->stack) {
+    for (int i = 0; i < MAX_BUF; i++) {
+      if (stack->stack[i].data)
+        free(stack->stack[i].data);
+    }
+    free(stack->stack);
   }
 }
 
-int push(stack_t *stack, char *value) {
-  if (stack->size >= MAX_BUF || value == NULL)
+int push(math_fn *stack, char *data, double value, int keys) {
+  if (stack->size >= MAX_BUF || data == NULL)
     return FAILURE;
-  strcpy(stack->data[stack->size], value);
+  strcpy(stack->stack[stack->size].data, data);
+  stack->stack->value = value;
+  stack->stack->keys = keys;
   stack->size++;
   return SUCCESS;
 }
 
-int pop(stack_t *stack, char *value) {
+int pop(math_fn *stack, char *data, double *value, int *keys) {
   stack->size--;
   if (stack->size >= 0) {
-    strcpy(value, stack->data[stack->size]);
+    strcpy(data, stack->stack[stack->size].data);
+    *value = stack->stack[stack->size].value;
+    *keys = stack->stack[stack->size].keys;
     return SUCCESS;
   }
   return FAILURE;
@@ -98,14 +77,13 @@ char *simple_pars(const char *string, int *i) {
   return sub_str;
 }
 
-void stack_output(stack_t *stack) {
+void stack_output(math_fn *stack) {
   char out[MAX_BUF] = {'\0'};
-  int i = 0;
+  double value = 0.0;
+  int keys = 0;
   while ((stack->size - 1) >= 0) {
-    pop(stack, out);
-    printf("%s ", out);
+    pop(stack, out, &value, &keys);
+    printf("data: %s\tvalue: %.6f\t keys: %d\n", out, value, keys);
     memset(out, '\0', MAX_BUF);
-    i++;
   }
-  putchar('\n');
 }

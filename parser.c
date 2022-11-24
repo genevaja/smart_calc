@@ -41,7 +41,7 @@ int check_dot(char *sub_string) {
 }
 
 
-int parser(stack_t *stack, char *string) {
+int parser(math_fn *stack, char *string) {
   int exit_code = SUCCESS;
   char *lexemes[] = LEXEME;
   // Сначала сбрасываем счётчик стека
@@ -66,7 +66,7 @@ int parser(stack_t *stack, char *string) {
         // Если соответствие найдено, заталкиваем слово в стек
         // и обнуляем подстроку cо счётчиком подстроки
         if (!strcmp(sub_string, lexemes[j])) {
-          push(stack, sub_string);
+          push(stack, sub_string, 0.0, 0);
           memset(sub_string, '\0', MAX_BUF);
           i = DEFAULT; sub_str_flag = DEFAULT;
           push_res = SUCCESS;
@@ -95,7 +95,7 @@ int parser(stack_t *stack, char *string) {
             exit_code = WRONG_EXPRESSION;
             break;
           }
-          push(stack, sub_string);
+          push(stack, sub_string, 0.0, 0);
           memset(sub_string, '\0', MAX_BUF);
           push_res = SUCCESS;
           i = 0;

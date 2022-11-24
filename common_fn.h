@@ -13,22 +13,6 @@
 #define FAILURE 1
 #define WRONG_EXPRESSION 2
 
-#define MEM_ALLOC(TYPE, FUNNAME) \
-  TYPE **FUNNAME(int k) {\
-    TYPE **result = (TYPE**)malloc(MAX_BUF * sizeof(TYPE*));\
-    for (int i = 0; i < MAX_BUF; i++) {\
-      result[i] = (TYPE*)malloc(MAX_BUF * sizeof(TYPE));\
-      for (int j = 0; j < MAX_BUF; j++) {\
-        if (k == 0) \
-          result[i][j] = '\0';\
-        else if (k == 1) \
-          result[i][j] = 0.0;\
-        else if (k == 2) \
-          result[i][j] = 0;\
-      }\
-    }\
-    return result;\
-  }
 
 
 #define LEXEME {"log", "ln", "sin", "cos", "tan", "ctg", "acos", "asin", "atan", \
@@ -62,35 +46,36 @@ enum operations {
 };
 
 
-typedef struct stack_tag {
-  char **data;
-  int *keys; 
-  double *value;
-  int size;
+typedef struct stack_unit {
+  char *data;
+  double value;
+  int keys;
 } stack_t;
+
+typedef struct stack_com {
+  stack_t *stack;
+  int size;
+} math_fn;
 
 char *input_text(char *a);
 char **mem_alloc(void);
 
 
-int init_stack(stack_t *stack);
-void free_stack(stack_t *stack);
-int push(stack_t *stack, char *value);
-int pop(stack_t *stack, char *value);
+int stack_init(math_fn *stack);
+void free_stack(math_fn *stack);
+int push(math_fn *stack, char *data, double value, int keys);
+int pop(math_fn *stack, char *data, double *value, int *keys);
+// int pop(math_fn *stack, char *data, double value, int keys);
 char *simple_pars(const char *string, int *i);
-void stack_output(stack_t *stack);
-int parse_push(stack_t *stack, const char *string);
+void stack_output(math_fn *stack);
+int parse_push(math_fn *stack, const char *string);
 
 // Приоритеты для лексем
 int priority_op(int operation);
 
 // Парсер математических выражений
-int parser(stack_t *stack, char *string);
+int parser(math_fn *stack, char *string);
 
-int notation(stack_t *stack);
-
-char **mem_alloc_char(int);
-double *mem_alloc_double(void);
-int *mem_alloc_int(void);
+int notation(math_fn *stack);
 
 #endif
