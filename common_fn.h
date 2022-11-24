@@ -64,8 +64,8 @@ enum operations {
 
 typedef struct stack_tag {
   char **data;
-  int **keys; 
-  double **value;
+  int *keys; 
+  double *value;
   int size;
 } stack_t;
 
@@ -90,7 +90,7 @@ int parser(stack_t *stack, char *string);
 int notation(stack_t *stack);
 
 char **mem_alloc_char(int);
-double **mem_alloc_double(int);
-int **mem_alloc_int(int);
+double *mem_alloc_double(void);
+int *mem_alloc_int(void);
 
 #endif
