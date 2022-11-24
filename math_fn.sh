@@ -10,7 +10,7 @@ declare -a rand_fn=( "trig_fn" "math_fn" "variables" )
 
 
 
-for lines in {1..1000}; do
+for lines in {1..100}; do
     done_expr=""
     # Поменял на время 20 на 10
     memb_of_expr=$(( $RANDOM % 20 + 1))
