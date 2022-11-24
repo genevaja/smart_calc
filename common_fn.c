@@ -44,8 +44,10 @@ int push(math_fn *stack, char *data, double value, int keys) {
   if (stack->size >= MAX_BUF || data == NULL)
     return FAILURE;
   strcpy(stack->stack[stack->size].data, data);
-  stack->stack->value = value;
-  stack->stack->keys = keys;
+  // printf("VALUE: %.6f\n", value);
+  stack->stack[stack->size].value = value;
+  // printf("KEYS: %d\n", keys);
+  stack->stack[stack->size].keys = keys;
   stack->size++;
   return SUCCESS;
 }
@@ -83,7 +85,7 @@ void stack_output(math_fn *stack) {
   int keys = 0;
   while ((stack->size - 1) >= 0) {
     pop(stack, out, &value, &keys);
-    printf("data: %s\tvalue: %.6f\t keys: %d\n", out, value, keys);
+    printf("%6s: %6s%10s: %.6f%10s: %3d\n", "data", out, "value", value, "keys", keys);
     memset(out, '\0', MAX_BUF);
   }
 }

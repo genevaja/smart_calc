@@ -11,6 +11,13 @@ qty_fn=$(wc -l fn.txt | awk '{printf $1}')
 
 printf "#include \"../header.h\"\n" >> "$test_file"
 
+if [[ $1 -eq 1 ]]; then
+  stack_output="stack_output(&stack);"
+else
+  stack_outpu=""
+fi
+
+
 for (( i=1; i<=$qty_fn; i++)); do
 string=$(head -$i fn.txt | tail +$i)
 example=$(head -$i fn_str.txt | tail +$i)
@@ -29,6 +36,7 @@ START_TEST(parser_$i) {
       ck_assert_int_eq(strcmp(string[i], stack.stack[i].data), 0);
     }
   }
+  $stack_output
   free_stack(&stack);
 }
 END_TEST" >> "$test_file"
