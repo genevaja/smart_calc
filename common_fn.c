@@ -85,7 +85,7 @@ void stack_output(math_fn *stack) {
   int keys = 0;
   while ((stack->size - 1) >= 0) {
     pop(stack, out, &value, &keys);
-    printf("%6s: %6s%10s: %.6f%10s: %3d\n", "data", out, "value", value, "keys", keys);
+    printf("%6s: %6s%8s: %10.6f%10s: %3d\n", "data", out, "value", value, "keys", keys);
     memset(out, '\0', MAX_BUF);
   }
 }

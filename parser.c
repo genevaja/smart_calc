@@ -95,7 +95,7 @@ int parser(math_fn *stack, char *string) {
             exit_code = WRONG_EXPRESSION;
             break;
           }
-          push(stack, sub_string, atof(sub_string), 21);
+          push(stack, sub_string, atof(sub_string), NUMBER);
           memset(sub_string, '\0', MAX_BUF);
           push_res = SUCCESS;
           i = 0;
