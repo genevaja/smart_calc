@@ -3,7 +3,7 @@
 rm fn*.txt 2>/dev/null
 ./math_fn.sh $1
 
-rm tests/parser_test.c
+rm tests/parser_test.c 2>/dev/null
 
 test_file="parser_test.c"
 

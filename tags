@@ -17,14 +17,14 @@ CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lm -lpthread$/;"	m
 CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lpthread -lrt -lm -lsubunit$/;"	m
 COS	common_fn.h	/^  COS, \/\/ 14$/;"	e	enum:operations
 CTG	common_fn.h	/^  CTG, \/\/ 16$/;"	e	enum:operations
-DEFAULT	parser.c	12;"	d	file:
-DIGIT	parser.c	11;"	d	file:
+DEFAULT	parser.c	5;"	d	file:
+DIGIT	parser.c	4;"	d	file:
 DIV	common_fn.h	/^  DIV, \/\/ 3$/;"	e	enum:operations
 FAILURE	common_fn.h	13;"	d
 FAILURE	temp/main.c	5;"	d	file:
 GCOV_FLAGS	Makefile	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 INCL_LIB	Makefile	/^INCL_LIB = -L.$/;"	m
-LETTER	parser.c	10;"	d	file:
+LETTER	parser.c	3;"	d	file:
 LEXEME	common_fn.h	18;"	d
 LIB_NAME	Makefile	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_OBJS	Makefile	/^LIB_OBJS := $(LIB_SRC:$(SOURCE_DIR)\/%.c=%.o)$/;"	m
@@ -37,7 +37,7 @@ MAX_BUF	temp/main.c	6;"	d	file:
 MINUS	common_fn.h	/^  MINUS, \/\/ undefined minus \/\/ 9$/;"	e	enum:operations
 MOD	common_fn.h	/^  MOD, \/\/ 4$/;"	e	enum:operations
 MUL	common_fn.h	/^  MUL, \/\/ 2$/;"	e	enum:operations
-NUMBER	common_fn.h	/^  NUMBER \/\/ 21$/;"	e	enum:operations
+NUMBER	common_fn.h	/^  NUMBER, \/\/ 21$/;"	e	enum:operations
 PLUS	common_fn.h	/^  PLUS, \/\/ unary plus 10$/;"	e	enum:operations
 POW	common_fn.h	/^  POW, \/\/ 5$/;"	e	enum:operations
 SIN	common_fn.h	/^  SIN, \/\/ 13$/;"	e	enum:operations
@@ -47,106 +47,7 @@ SRC_COMMON_FN_H_	common_fn.h	2;"	d
 STACK_OVERFLOW	common_fn.h	10;"	d
 STACK_UNDERFLOW	common_fn.h	11;"	d
 START_TEST	tests/parser_test.c	/^START_TEST(parser_1) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_10) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_100) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_11) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_12) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_13) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_14) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_15) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_16) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_17) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_18) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_19) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_2) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_20) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_21) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_22) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_23) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_24) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_25) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_26) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_27) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_28) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_29) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_3) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_30) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_31) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_32) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_33) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_34) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_35) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_36) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_37) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_38) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_39) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_4) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_40) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_41) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_42) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_43) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_44) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_45) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_46) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_47) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_48) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_49) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_5) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_50) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_51) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_52) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_53) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_54) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_55) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_56) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_57) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_58) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_59) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_6) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_60) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_61) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_62) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_63) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_64) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_65) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_66) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_67) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_68) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_69) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_7) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_70) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_71) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_72) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_73) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_74) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_75) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_76) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_77) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_78) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_79) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_8) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_80) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_81) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_82) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_83) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_84) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_85) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_86) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_87) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_88) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_89) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_9) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_90) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_91) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_92) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_93) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_94) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_95) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_96) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_97) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_98) {$/;"	f
-START_TEST	tests/parser_test.c	/^START_TEST(parser_99) {$/;"	f
-START_TEST	tests/temp/notation_test.c	/^START_TEST(notation_1) {$/;"	f
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_1) {$/;"	f
 SUB	common_fn.h	/^  SUB, \/\/ binary minus 1$/;"	e	enum:operations
 SUCCESS	common_fn.h	12;"	d
 SUCCESS	temp/main.c	4;"	d	file:
@@ -156,20 +57,22 @@ TEST_DIR	Makefile	/^TEST_DIR = .\/tests$/;"	m
 TEST_EXEC	Makefile	/^TEST_EXEC = $(TEST_OBJS:%.o=%.out)$/;"	m
 TEST_OBJS	Makefile	/^TEST_OBJS := $(TEST_SRC:$(TEST_DIR)\/%.c=%.o)$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC := $(wildcard $(TEST_DIR)\/*.c)$/;"	m
+VAR	common_fn.h	/^  VAR \/\/22 variables$/;"	e	enum:operations
 WRONG_EXPRESSION	common_fn.h	14;"	d
 check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f
+check_unary	parser.c	/^int check_unary(char *sub_string, math_fn *stack) {$/;"	f
 data	common_fn.h	/^  char *data;$/;"	m	struct:stack_unit
 data	temp/main.c	/^  char *data;$/;"	m	struct:stack_unit	file:
 free_stack	common_fn.c	/^void free_stack(math_fn *stack) {$/;"	f
 free_stack	temp/main.c	/^void free_stack(math_fn *stack) {$/;"	f
 input_text	common_fn.c	/^char *input_text(char *a) {$/;"	f
+key_return	parser.c	/^int key_return(char *string) {$/;"	f
 keys	common_fn.h	/^  int keys;$/;"	m	struct:stack_unit
 keys	temp/main.c	/^  int keys;$/;"	m	struct:stack_unit	file:
 letter_check	parser.c	/^int letter_check(char letter) {$/;"	f
 main	temp/main.c	/^int main() {$/;"	f
 main	tests/parser_test.c	/^int main() {$/;"	f
-main	tests/temp/notation_test.c	/^int main() {$/;"	f
-main	tests/temp/stack.c	/^int main() {$/;"	f
+main	tests/temp/parser_test.c	/^int main() {$/;"	f
 math_fn	common_fn.h	/^} math_fn;$/;"	t	typeref:struct:stack_com
 math_fn	temp/main.c	/^} math_fn;$/;"	t	typeref:struct:stack_com	file:
 operations	common_fn.h	/^enum operations {$/;"	g
@@ -181,7 +84,7 @@ simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f
 size	common_fn.h	/^  int size;$/;"	m	struct:stack_com
 size	temp/main.c	/^  int size;$/;"	m	struct:stack_com	file:
 sprintf_test	tests/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
-sprintf_test	tests/temp/notation_test.c	/^Suite * sprintf_test(void) {$/;"	f
+sprintf_test	tests/temp/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
 stack	common_fn.h	/^  stack_t *stack;$/;"	m	struct:stack_com
 stack	temp/main.c	/^  stack_t *stack;$/;"	m	struct:stack_com	file:
 stack_com	common_fn.h	/^typedef struct stack_com {$/;"	s

@@ -1,15 +1,86 @@
 #include "common_fn.h"
 
-// L: 65-90
-// l: 97-122
-// d: 40-57
-// .: 46    /: 47   +: 43   -: 45   *: 42   (: 40   ): 41   %: 37   ^: 94
-
-// sin(90)/cos(180)*3.1423455*sqrt(16)*-1mod10
-
 #define LETTER 1
 #define DIGIT 2
 #define DEFAULT 0
+
+int check_unary(char *sub_string, math_fn *stack) {
+  int check_result = -1;
+  if (stack->size == 0) {
+    if (!strcmp(sub_string, "-"))
+      check_result = MINUS;
+    else if (!strcmp(sub_string, "+"))
+      check_result = PLUS;
+  } else if (!strcmp(stack->stack[stack->size - 1].data, "(")) {
+    if (!strcmp(sub_string, "-"))
+      check_result = MINUS;
+    else if (!strcmp(sub_string, "+"))
+      check_result = PLUS;
+  } else if (strcmp(stack->stack[stack->size].data, ")")) {
+    if (!strcmp(sub_string, "-"))
+      check_result = SUB;
+    else if (!strcmp(sub_string, "+"))
+      check_result = SUM;
+  } else if (stack->stack[stack->size].keys == NUMBER) {
+    if (!strcmp(sub_string, "-"))
+      check_result = SUB;
+    else if (!strcmp(sub_string, "+"))
+      check_result = SUM;
+  }
+  return check_result;
+}
+
+
+int key_return(char *string) {
+  int key_code = -1;
+  if (!strcmp(string, "log"))
+    key_code = LOG;
+  if (!strcmp(string, "ln"))
+    key_code = LN;
+  if (!strcmp(string, "sin"))
+    key_code = SIN;
+  if (!strcmp(string, "cos"))
+    key_code = COS;
+  if (!strcmp(string, "tan"))
+    key_code = TAN;
+  if (!strcmp(string, "ctg"))
+    key_code = CTG;
+  if (!strcmp(string, "acos"))
+    key_code = ACOS;
+  if (!strcmp(string, "asin"))
+    key_code = ASIN;
+  if (!strcmp(string, "atan"))
+    key_code = ATAN;
+  if (!strcmp(string, "actg"))
+    key_code = ACTG;
+  if (!strcmp(string, "("))
+    key_code = BRO;
+  if (!strcmp(string, ")"))
+    key_code = BRC;
+  if (!strcmp(string, "/"))
+    key_code = DIV;
+  if (!strcmp(string, "*"))
+    key_code = MUL;
+  if (!strcmp(string, "+"))
+    key_code = SUM;
+  if (!strcmp(string, "-"))
+    key_code = MINUS;
+  if (!strcmp(string, "sqrt"))
+    key_code = SQRT;
+  if (!strcmp(string, "mod"))
+    key_code = MOD;
+  if (!strcmp(string, "%"))
+    key_code = MOD;
+  if (!strcmp(string, "^"))
+    key_code = POW;
+  if (!strcmp(string, "x"))
+    key_code = VAR;
+  if (!strcmp(string, "y"))
+    key_code = VAR;
+  if (!strcmp(string, "z"))
+    key_code = VAR;
+  return key_code;
+}
 
 
 int letter_check(char letter) {
@@ -66,7 +137,11 @@ int parser(math_fn *stack, char *string) {
         // Если соответствие найдено, заталкиваем слово в стек
         // и обнуляем подстроку cо счётчиком подстроки
         if (!strcmp(sub_string, lexemes[j])) {
-          push(stack, sub_string, 0.0, 0);
+          int key_code = key_return(sub_string);
+          // Check unary minus and plus
+          if (!strcmp(sub_string, "-") || !strcmp(sub_string, "+"))
+            key_code = check_unary(sub_string, stack);
+          push(stack, sub_string, 0.0, key_code);
           memset(sub_string, '\0', MAX_BUF);
           i = DEFAULT; sub_str_flag = DEFAULT;
           push_res = SUCCESS;

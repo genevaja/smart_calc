@@ -42,7 +42,8 @@ enum operations {
   ASIN, // 18
   ATAN, // 19
   ACTG, // 20
-  NUMBER // 21
+  NUMBER, // 21
+  VAR //22 variables
 };
 
 
