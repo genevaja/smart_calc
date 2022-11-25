@@ -76,4 +76,7 @@ int main() {
 
 # string=$(head -$number $current_path/result.txt | tail +$number)
 
+if [ ! -d "tests" ]; then
+  mkdir tests
+fi
 mv "$test_file" tests
