@@ -28,7 +28,9 @@ for (( lines=1; lines<=$1; lines++)); do
             break
         else
             if [[ $(($j % 2)) -eq 0 ]]; then
-                done_expr=$done_expr$(printf "\"%s\", \"(\", \"%s\", \")\", " "${trig_fn[$RANDOM % ${#trig_fn[@]}]}" "$rand_float")
+                done_expr=$done_expr`
+                `$(printf "\"%s\", \"(\", \"%s\", \")\", " `
+                `"${trig_fn[$RANDOM % ${#trig_fn[@]}]}" "$rand_float")
             elif [[ $(($j % 4)) -eq 3 ]]; then
                 done_expr=$done_expr$(printf "\"%s\", \"%s\", \"(\", \"(\", \"%s\", \"%s\", \"%s\", \")\", `
                                              `\"%s\", \"(\", \"%s\", \"%s\", \"%s\", \")\", \")\", \"%s\", " `
@@ -50,6 +52,9 @@ for (( lines=1; lines<=$1; lines++)); do
             fi
         fi 
     done
+    unary_expr="\"-\", \"0.345\", \"+\", \"0.345\", \"+\", \"(\", \"-\", \"0.345\", `
+                `\")\", \"+\", \"0.345\", \"+\", "
+    done_expr=$unary_expr$done_expr
     echo "$done_expr" | sed 's/ $//' | sed 's/,$//' >> fn.txt
     echo "$done_expr" | tr -d , | tr -d \" | tr -d ' ' >> fn_str.txt
 done
