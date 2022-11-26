@@ -5,13 +5,23 @@ declare -a trig_fn=( "log" "ln" "sin" "cos" "tan" "ctg" "acos" "asin" "atan" "ac
 
 declare -a math_fn=( "*" "-" "+" "/" "^" )
 
-
 declare -a rand_fn=( "trig_fn" "math_fn" "variables" )
 
+default=1
 
+if [[ $# -lt 1 || $1 -lt 1 ]]; then
+    echo "Need argument. Enter tests qty: "
+    read input
+    if [[ $input -gt $default ]]; then
+        default=$input
+    fi
+fi
 
+if [[ $1 -gt 0 ]]; then
+    default=$1
+fi
 # for lines in {1..$1}; do
-for (( lines=1; lines<=$1; lines++)); do
+for (( lines=1; lines<=$default; lines++)); do
     done_expr=""
     # Поменял на время 20 на 10
     memb_of_expr=$(( $RANDOM % 20 + 1))
