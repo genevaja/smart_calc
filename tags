@@ -25,7 +25,7 @@ FAILURE	temp/main.c	5;"	d	file:
 GCOV_FLAGS	Makefile	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 INCL_LIB	Makefile	/^INCL_LIB = -L.$/;"	m
 LETTER	parser.c	3;"	d	file:
-LEXEME	common_fn.h	18;"	d
+LEXEME	common_fn.h	20;"	d
 LIB_NAME	Makefile	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_OBJS	Makefile	/^LIB_OBJS := $(LIB_SRC:$(SOURCE_DIR)\/%.c=%.o)$/;"	m
 LIB_OUT	Makefile	/^LIB_OUT = libcalc_backend.a$/;"	m
@@ -38,6 +38,8 @@ MINUS	common_fn.h	/^  MINUS, \/\/ undefined minus \/\/ 9$/;"	e	enum:operations
 MOD	common_fn.h	/^  MOD, \/\/ 4$/;"	e	enum:operations
 MUL	common_fn.h	/^  MUL, \/\/ 2$/;"	e	enum:operations
 NUMBER	common_fn.h	/^  NUMBER, \/\/ 21$/;"	e	enum:operations
+OFF	common_fn.h	16;"	d
+ON	common_fn.h	15;"	d
 PLUS	common_fn.h	/^  PLUS, \/\/ unary plus 10$/;"	e	enum:operations
 POW	common_fn.h	/^  POW, \/\/ 5$/;"	e	enum:operations
 SIN	common_fn.h	/^  SIN, \/\/ 13$/;"	e	enum:operations
@@ -60,8 +62,10 @@ VAR	common_fn.h	/^  VAR \/\/22 variables$/;"	e	enum:operations
 WRONG_EXPRESSION	common_fn.h	14;"	d
 check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f
 check_unary	parser.c	/^int check_unary(char *sub_string, math_fn *stack) {$/;"	f
+clean_var	notation.c	/^void clean_var(char *data, double *value, int *keys) {$/;"	f
 data	common_fn.h	/^  char *data;$/;"	m	struct:stack_unit
 data	temp/main.c	/^  char *data;$/;"	m	struct:stack_unit	file:
+fifo_out	common_fn.c	/^int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys) {$/;"	f
 free_stack	common_fn.c	/^void free_stack(math_fn *stack) {$/;"	f
 free_stack	temp/main.c	/^void free_stack(math_fn *stack) {$/;"	f
 input_text	common_fn.c	/^char *input_text(char *a) {$/;"	f
@@ -77,11 +81,14 @@ math_fn	temp/main.c	/^} math_fn;$/;"	t	typeref:struct:stack_com	file:
 operations	common_fn.h	/^enum operations {$/;"	g
 parser	parser.c	/^int parser(math_fn *stack, char *string) {$/;"	f
 pop	common_fn.c	/^int pop(math_fn *stack, char *data, double *value, int *keys) {$/;"	f
-priority_op	notation.c	/^int priority_op(int operation) {$/;"	f
+priority	notation.c	/^int priority(int operation) {$/;"	f
 push	common_fn.c	/^int push(math_fn *stack, char *data, double value, int keys) {$/;"	f
+push_math	notation.c	/^int push_math(math_fn *calif, char *data, double value, int keys) {$/;"	f
+push_tex	notation.c	/^int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {$/;"	f
 simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f
 size	common_fn.h	/^  int size;$/;"	m	struct:stack_com
 size	temp/main.c	/^  int size;$/;"	m	struct:stack_com	file:
+sort_station	notation.c	/^math_fn *sort_station(math_fn *stack) {$/;"	f
 sprintf_test	tests/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
 stack	common_fn.h	/^  stack_t *stack;$/;"	m	struct:stack_com
 stack	temp/main.c	/^  stack_t *stack;$/;"	m	struct:stack_com	file:

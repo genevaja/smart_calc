@@ -12,6 +12,8 @@
 #define SUCCESS 0
 #define FAILURE 1
 #define WRONG_EXPRESSION 2
+#define ON 1
+#define OFF 0
 
 
 
@@ -77,6 +79,7 @@ int priority_op(int operation);
 // Парсер математических выражений
 int parser(math_fn *stack, char *string);
 
-int notation(math_fn *stack);
+math_fn *sort_station(math_fn *stack);
+int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys);
 
 #endif

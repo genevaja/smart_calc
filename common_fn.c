@@ -63,6 +63,18 @@ int pop(math_fn *stack, char *data, double *value, int *keys) {
   return FAILURE;
 }
 
+int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys) {
+  memset(data, '\0', MAX_BUF);
+  if (*queue < stack->size) {
+    strcpy(data, stack->stack[*queue].data);
+    *value = stack->stack[*queue].value;
+    *keys = stack->stack[*queue].keys;
+    *queue += 1;
+    return SUCCESS;
+  }
+  return FAILURE;
+}
+
 // Простой парсер только через пробелы
 char *simple_pars(const char *string, int *i) {
   char *sub_str = (char*)malloc(MAX_BUF * sizeof(char));
