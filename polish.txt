@@ -1,0 +1,31 @@
+Initiate new stack Texas and California
+for var to str_length
+    switch (x)
+      case (NUM)
+        move NUM to California
+        break
+      case (BRO)
+        move BRO to Texas
+        switch breket_flag_on
+      case (BRC)
+        while not BRO in Texas
+          if Texas-size greater 0
+            pop Texas and push to California
+          else if breket_flag is on
+            return FAILURE Incorrect expression
+        pop Texas to trash
+      case (MINUS)
+        push MINUS to California
+      case (PLUS)
+        push PLUS to California
+      default
+        while priority less Texas && Texas-size greater 0
+          pop Texas and push to California
+        push x to Texas
+        break
+if str empty pop Texas and push California
+if str empty && california stay single return RESULT
+
+        
+
+        
