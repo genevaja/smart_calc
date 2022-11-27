@@ -12,21 +12,29 @@ BIN	Makefile	/^BIN = bin$/;"	m
 BRC	common_fn.h	/^  BRC, \/\/ 8$/;"	e	enum:operations
 BRO	common_fn.h	/^  BRO, \/\/ 7$/;"	e	enum:operations
 CC	Makefile	/^CC = gcc$/;"	m
+CC	sanit.mk	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror -g -std=c11 -lm$/;"	m
+CFLAGS	sanit.mk	/^CFLAGS = -g -Werror -Wextra -Wall -std=c11$/;"	m
 CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lm -lpthread$/;"	m
 CHECK_FLAGS	Makefile	/^    CHECK_FLAGS = -lcheck -lpthread -lrt -lm -lsubunit$/;"	m
+CHECK_FLAGS	sanit.mk	/^    CHECK_FLAGS = -lcheck -lm -lpthread -lrt -lsubunit$/;"	m
+CHECK_FLAGS	sanit.mk	/^    CHECK_FLAGS = -lcheck -lm -lpthread$/;"	m
 COS	common_fn.h	/^  COS, \/\/ 14$/;"	e	enum:operations
 CTG	common_fn.h	/^  CTG, \/\/ 16$/;"	e	enum:operations
 DEFAULT	parser.c	5;"	d	file:
 DIGIT	parser.c	4;"	d	file:
 DIV	common_fn.h	/^  DIV, \/\/ 3$/;"	e	enum:operations
+EXEC_GCOV	sanit.mk	/^EXEC_GCOV = $(TEST_OBJS:%.o=%.out) $/;"	m
 FAILURE	common_fn.h	13;"	d
 FAILURE	temp/main.c	5;"	d	file:
 GCOV_FLAGS	Makefile	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
+GCOV_FLAGS	sanit.mk	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 INCL_LIB	Makefile	/^INCL_LIB = -L.$/;"	m
+INCL_LIB	sanit.mk	/^INCL_LIB = -L.$/;"	m
 LETTER	parser.c	3;"	d	file:
 LEXEME	common_fn.h	20;"	d
 LIB_NAME	Makefile	/^LIB_NAME = libcalc_backend.a$/;"	m
+LIB_NAME	sanit.mk	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_OBJS	Makefile	/^LIB_OBJS := $(LIB_SRC:$(SOURCE_DIR)\/%.c=%.o)$/;"	m
 LIB_OUT	Makefile	/^LIB_OUT = libcalc_backend.a$/;"	m
 LIB_SRC	Makefile	/^LIB_SRC := $(wildcard $(SOURCE_DIR)\/*.c)$/;"	m
@@ -42,22 +50,29 @@ OFF	common_fn.h	16;"	d
 ON	common_fn.h	15;"	d
 PLUS	common_fn.h	/^  PLUS, \/\/ unary plus 10$/;"	e	enum:operations
 POW	common_fn.h	/^  POW, \/\/ 5$/;"	e	enum:operations
+SANIT_FLAGS	sanit.mk	/^SANIT_FLAGS = -fsanitize=address$/;"	m
 SIN	common_fn.h	/^  SIN, \/\/ 13$/;"	e	enum:operations
 SOURCE_DIR	Makefile	/^SOURCE_DIR = .$/;"	m
 SQRT	common_fn.h	/^  SQRT, \/\/ 6$/;"	e	enum:operations
 SRC_COMMON_FN_H_	common_fn.h	2;"	d
+SRC_DIR	sanit.mk	/^SRC_DIR = .$/;"	m
+SRC_OBJS	sanit.mk	/^SRC_OBJS := $(SRC_SRC:%.c=$(SRC_DIR)\/%.o)$/;"	m
+SRC_SRC	sanit.mk	/^SRC_SRC := $(wildcard $(SRC_DIR)\/*.c)$/;"	m
 STACK_OVERFLOW	common_fn.h	10;"	d
 STACK_UNDERFLOW	common_fn.h	11;"	d
-START_TEST	tests/parser_test.c	/^START_TEST(parser_1) {$/;"	f
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_1) {$/;"	f
 SUB	common_fn.h	/^  SUB, \/\/ binary minus 1$/;"	e	enum:operations
 SUCCESS	common_fn.h	12;"	d
 SUCCESS	temp/main.c	4;"	d	file:
 SUM	common_fn.h	/^  SUM = 0,$/;"	e	enum:operations
 TAN	common_fn.h	/^  TAN, \/\/ 15$/;"	e	enum:operations
 TEST_DIR	Makefile	/^TEST_DIR = .\/tests$/;"	m
+TEST_DIR	sanit.mk	/^TEST_DIR = .\/tests$/;"	m
 TEST_EXEC	Makefile	/^TEST_EXEC = $(TEST_OBJS:%.o=%.out)$/;"	m
 TEST_OBJS	Makefile	/^TEST_OBJS := $(TEST_SRC:$(TEST_DIR)\/%.c=%.o)$/;"	m
+TEST_OBJS	sanit.mk	/^TEST_OBJS := $(TEST_SRC:$(TEST_DIR)\/%.c=%.o)$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC := $(wildcard $(TEST_DIR)\/*.c)$/;"	m
+TEST_SRC	sanit.mk	/^TEST_SRC := $(wildcard $(TEST_DIR)\/*.c)$/;"	m
 VAR	common_fn.h	/^  VAR \/\/22 variables$/;"	e	enum:operations
 WRONG_EXPRESSION	common_fn.h	14;"	d
 check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f
@@ -75,7 +90,7 @@ keys	temp/main.c	/^  int keys;$/;"	m	struct:stack_unit	file:
 letter_check	parser.c	/^int letter_check(char letter) {$/;"	f
 main	temp/main.c	/^int main() {$/;"	f
 main	tests/main.c	/^int main() {$/;"	f
-main	tests/parser_test.c	/^int main() {$/;"	f
+main	tests/temp/parser_test.c	/^int main() {$/;"	f
 math_fn	common_fn.h	/^} math_fn;$/;"	t	typeref:struct:stack_com
 math_fn	temp/main.c	/^} math_fn;$/;"	t	typeref:struct:stack_com	file:
 operations	common_fn.h	/^enum operations {$/;"	g
@@ -83,13 +98,13 @@ parser	parser.c	/^int parser(math_fn *stack, char *string) {$/;"	f
 pop	common_fn.c	/^int pop(math_fn *stack, char *data, double *value, int *keys) {$/;"	f
 priority	notation.c	/^int priority(int operation) {$/;"	f
 push	common_fn.c	/^int push(math_fn *stack, char *data, double value, int keys) {$/;"	f
-push_math	notation.c	/^int push_math(math_fn *calif, char *data, double value, int keys) {$/;"	f
+push_math	notation.c	/^int push_math(math_fn *calif, int keys) {$/;"	f
 push_tex	notation.c	/^int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {$/;"	f
 simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f
 size	common_fn.h	/^  int size;$/;"	m	struct:stack_com
 size	temp/main.c	/^  int size;$/;"	m	struct:stack_com	file:
-sort_station	notation.c	/^math_fn *sort_station(math_fn *stack) {$/;"	f
-sprintf_test	tests/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
+sort_station	notation.c	/^int sort_station(math_fn *stack) {$/;"	f
+sprintf_test	tests/temp/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
 stack	common_fn.h	/^  stack_t *stack;$/;"	m	struct:stack_com
 stack	temp/main.c	/^  stack_t *stack;$/;"	m	struct:stack_com	file:
 stack_com	common_fn.h	/^typedef struct stack_com {$/;"	s

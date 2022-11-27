@@ -23,10 +23,24 @@ int priority(int operation) {
   return priority;
 }
 
-int push_math(math_fn *calif, char *data, double value, int keys) {
-  int exit_code = 0;
+void clean_var(char *data, double *value, int *keys) {
+  memset(data, '\0', MAX_BUF);
+  *value = 0.0;
+  *keys = 0;
+}
+
+int push_math(math_fn *calif, int keys) {
+  int exit_code = FAILURE;
   switch (keys) {
     case SUM: {
+      char temp_data[MAX_BUF] = {'\0'}; double temp_value = 0.0; int temp_keys = 0;
+      char temp_data2[MAX_BUF] = {'\0'}; double temp_value2 = 0.0; int temp_keys2 = 0; 
+      pop(calif, temp_data, &temp_value, &temp_keys);
+      pop(calif, temp_data2, &temp_value2, &temp_keys2);
+      push(calif, "\0", temp_value + temp_value2, temp_keys);
+      clean_var(temp_data, &temp_value, &temp_keys);
+      clean_var(temp_data2, &temp_value2, &temp_keys2);
+      exit_code = SUCCESS;
       break;
     }
     case SUB: {
@@ -91,27 +105,26 @@ int push_math(math_fn *calif, char *data, double value, int keys) {
   return exit_code;
 }
 
-void clean_var(char *data, double *value, int *keys) {
-  memset(data, '\0', MAX_BUF);
-  *value = 0.0;
-  *keys = 0;
-}
 
 int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {
-  char temp_data[MAX_BUF] = {'\0'};
   double temp_value = 0.0;
   int temp_keys = 0;
+  if (texas->size == 0)
+    push(texas, data, value, keys);
+  else {
     while (priority(keys) <= priority(texas->stack[texas->size].keys)) {
+      char temp_data[MAX_BUF] = {'\0'};
       pop(texas, temp_data, &temp_value, &temp_keys);
-      push_math(calif, temp_data, temp_value, temp_keys);
+      push_math(calif, temp_keys);
       clean_var(temp_data, &temp_value, &temp_keys);
     }
     push(texas, data, value, keys);
+  }
   return SUCCESS;
 }
 
 
-math_fn *sort_station(math_fn *stack) {
+int sort_station(math_fn *stack) {
   math_fn texas;
   math_fn calif;
   stack_init(&texas);
@@ -123,6 +136,7 @@ math_fn *sort_station(math_fn *stack) {
     switch (keys) {
       case NUMBER: {
         push(&calif, data, value, keys);
+        printf("DATA: %s\tKEYS: %d\n", data, keys);
         clean_var(data, &value, &keys);
         break;
       }
@@ -136,7 +150,7 @@ math_fn *sort_station(math_fn *stack) {
         while (texas.stack[stack->size].keys != BRO) {
           if (texas.size > 0 && breket_flag == ON) {
             pop(&texas, data, &value, &keys);
-            push_math(&calif, data, value, keys);
+            push_math(&calif, keys);
             clean_var(data, &value, &keys);
           } else {
             return WRONG_EXPRESSION; 
@@ -153,7 +167,7 @@ math_fn *sort_station(math_fn *stack) {
   }
   while (texas.size > 0) {
     pop(&texas, data, &value, &keys);
-    push_math(&calif, data, value, keys);
+    push_math(&calif, keys);
     clean_var(data, &value, &keys);
   }
   if (calif.size > 1) {
@@ -171,5 +185,5 @@ math_fn *sort_station(math_fn *stack) {
   free_stack(&texas);
   free_stack(&calif);
 
-  return stack;
+  return SUCCESS;
 }

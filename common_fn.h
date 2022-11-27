@@ -79,7 +79,7 @@ int priority_op(int operation);
 // Парсер математических выражений
 int parser(math_fn *stack, char *string);
 
-math_fn *sort_station(math_fn *stack);
+int sort_station(math_fn *stack);
 int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys);
 
 #endif
