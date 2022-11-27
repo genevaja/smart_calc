@@ -8,16 +8,18 @@ int priority_op(int operation) {
     priority = 2;
   else if (operation == MUL || operation == DIV || operation == MOD)
     priority = 3;
-  else if (operation == POW || operation == SQRT || operation == COS ||
-           operation == SIN || operation == TAN || operation == CTG ||
-           operation == LN || operation == ACOS || operation == ASIN ||
-           operation == ATAN || operation == LOG)
+  else if (operation == POW)
     priority = 4;
-  else if (operation == PLUS || operation == MINUS) {
-    printf("Unaric operation\n");
+  else if (operation == SQRT || operation == COS || operation == SIN ||
+           operation == TAN || operation == CTG || operation == LN ||
+           operation == ACOS || operation == ASIN || operation == ATAN ||
+           operation == LOG)
     priority = 5;
+  else if (operation == PLUS || operation == MINUS) {
+    // printf("Unaric operation\n");
+    priority = 6;
   } else
-      printf("Error in priority: %d\n", operation);
+    priority = -1;
   return priority;
 }
 
