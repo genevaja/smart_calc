@@ -109,8 +109,10 @@ int push_math(math_fn *calif, int keys) {
 int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {
   double temp_value = 0.0;
   int temp_keys = 0;
-  if (texas->size == 0)
+  if (texas->size == 0) {
     push(texas, data, value, keys);
+    // printf("PUSH_TEX VALUE: %s\tKEYS: %d\n", data, keys);
+  }
   else {
     while (priority(keys) <= priority(texas->stack[texas->size].keys)) {
       char temp_data[MAX_BUF] = {'\0'};
@@ -125,13 +127,16 @@ int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys)
 
 
 int sort_station(math_fn *stack) {
+  printf("HERE\n");
   math_fn texas;
   math_fn calif;
   stack_init(&texas);
   stack_init(&calif);
   int queue = 0, breket_flag = OFF;
   char data[MAX_BUF] = {'\0'}; double value = 0.0; int keys = 0;
+  printf("IN SORT_ST STACK SIZE: %d\n", stack->size);
   for (; queue < stack->size;) {
+    // printf("HERE\n");
     fifo_out(&queue, stack, data, &value, &keys);
     switch (keys) {
       case NUMBER: {
@@ -163,12 +168,18 @@ int sort_station(math_fn *stack) {
         break;
       }
       default: {
+        // printf("DEFAULT\n");
         push_tex(&texas, &calif, data, value, keys);
       }
     }
+    // printf("TEXAS:\n");
+    // output(&texas);
+    // printf("CALIFORNIA:\n");
+    // output(&calif);
   }
   while (texas.size > 0) {
     pop(&texas, data, &value, &keys);
+    // printf("DATA: %s\tKEYS: %d\n", data, keys);
     push_math(&calif, keys);
     clean_var(data, &value, &keys);
   }
@@ -181,7 +192,6 @@ int sort_station(math_fn *stack) {
 
   stack->size = calif.size;
   for (int i = 0; i < MAX_BUF; i++) {
-    // stack->stack[i].data = calif.stack[i].data;
     strcpy(stack->stack[i].data, calif.stack[i].data);
     stack->stack[i].value = calif.stack[i].value;
     stack->stack[i].keys = calif.stack[i].keys;

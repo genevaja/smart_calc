@@ -71,6 +71,7 @@ int pop(math_fn *stack, char *data, double *value, int *keys);
 // int pop(math_fn *stack, char *data, double value, int keys);
 char *simple_pars(const char *string, int *i);
 void stack_output(math_fn *stack);
+void output(math_fn *stack);
 int parse_push(math_fn *stack, const char *string);
 
 // Приоритеты для лексем

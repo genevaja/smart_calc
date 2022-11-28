@@ -94,6 +94,7 @@ main	tests/temp/parser_test.c	/^int main() {$/;"	f
 math_fn	common_fn.h	/^} math_fn;$/;"	t	typeref:struct:stack_com
 math_fn	temp/main.c	/^} math_fn;$/;"	t	typeref:struct:stack_com	file:
 operations	common_fn.h	/^enum operations {$/;"	g
+output	common_fn.c	/^void output(math_fn *stack) {$/;"	f
 parser	parser.c	/^int parser(math_fn *stack, char *string) {$/;"	f
 pop	common_fn.c	/^int pop(math_fn *stack, char *data, double *value, int *keys) {$/;"	f
 priority	notation.c	/^int priority(int operation) {$/;"	f

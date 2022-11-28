@@ -44,6 +44,7 @@ void free_stack(math_fn *stack) {
 int push(math_fn *stack, char *data, double value, int keys) {
   if (stack->size >= MAX_BUF || data == NULL)
     return FAILURE;
+  // memset(stack->stack[stack->size].data, '\0', MAX_BUF);
   strcpy(stack->stack[stack->size].data, data);
   // printf("VALUE: %.6f\n", value);
   stack->stack[stack->size].value = value;
@@ -55,7 +56,7 @@ int push(math_fn *stack, char *data, double value, int keys) {
 
 int pop(math_fn *stack, char *data, double *value, int *keys) {
   stack->size--;
-  if (stack->size > 0) {
+  if (stack->size >= 0) {
     strcpy(data, stack->stack[stack->size].data);
     *value = stack->stack[stack->size].value;
     *keys = stack->stack[stack->size].keys;
@@ -100,5 +101,12 @@ void stack_output(math_fn *stack) {
     pop(stack, out, &value, &keys);
     printf("%6s: %6s%8s: %10.6f%10s: %3d\n", "data", out, "value", value, "keys", keys);
     memset(out, '\0', MAX_BUF);
+  }
+}
+
+void output(math_fn *stack) {
+  for (int i = 0; i < stack->size; i++) {
+    printf("%6s: %6s%8s: %10.6f%10s: %3d\n", "data", stack->stack[i].data, "value", stack->stack[i].value, "keys", stack->stack[i].keys);
+    // memset(out, '\0', MAX_BUF);
   }
 }
