@@ -19,6 +19,7 @@ int stack_init(math_fn *stack) {
   if (stack->stack != NULL) {
     for (int i = 0; i < MAX_BUF; i++) {
       stack->stack[i].data = (char*)malloc(MAX_BUF * sizeof(char));
+      memset(stack->stack[i].data, '\0', MAX_BUF);
       stack->stack[i].value = 0.0;
       stack->stack[i].keys = 0;
       if (!stack->stack[i].data)
@@ -54,7 +55,7 @@ int push(math_fn *stack, char *data, double value, int keys) {
 
 int pop(math_fn *stack, char *data, double *value, int *keys) {
   stack->size--;
-  if (stack->size >= 0) {
+  if (stack->size > 0) {
     strcpy(data, stack->stack[stack->size].data);
     *value = stack->stack[stack->size].value;
     *keys = stack->stack[stack->size].keys;

@@ -153,6 +153,8 @@ int sort_station(math_fn *stack) {
             push_math(&calif, keys);
             clean_var(data, &value, &keys);
           } else {
+            free_stack(&calif);
+            free_stack(&texas);
             return WRONG_EXPRESSION; 
           }
         }
@@ -172,12 +174,15 @@ int sort_station(math_fn *stack) {
   }
   if (calif.size > 1) {
     printf("Somewhere you are fucked\n");
+    free_stack(&calif);
+    free_stack(&texas);
     return FAILURE;
   }
 
   stack->size = calif.size;
   for (int i = 0; i < MAX_BUF; i++) {
-    stack->stack[i].data = calif.stack[i].data;
+    // stack->stack[i].data = calif.stack[i].data;
+    strcpy(stack->stack[i].data, calif.stack[i].data);
     stack->stack[i].value = calif.stack[i].value;
     stack->stack[i].keys = calif.stack[i].keys;
   }
