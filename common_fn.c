@@ -21,7 +21,7 @@ int stack_init(math_fn *stack) {
       stack->stack[i].data = (char*)malloc(MAX_BUF * sizeof(char));
       memset(stack->stack[i].data, '\0', MAX_BUF);
       stack->stack[i].value = 0.0;
-      stack->stack[i].keys = 0;
+      stack->stack[i].keys = -1;
       if (!stack->stack[i].data)
         exit_code = FAILURE;
       else

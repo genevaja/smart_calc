@@ -77,7 +77,6 @@ int push_math(math_fn *calif, int keys) {
       clean_var(temp_data, &temp_value, &temp_keys);\
       clean_var(temp_data2, &temp_value2, &temp_keys2);\
       break;
-                // Предусмотреть, чтобы числа были целые
     }
     case POW: {
       POP_BINARY;
@@ -137,11 +136,11 @@ int push_math(math_fn *calif, int keys) {
       POP_UNARY;
       double cos_value = cos(temp_value);
       double sin_value = sin(temp_value);
-      if (fabs(sin_value) > 1e-15) {
+      if (fabs(sin_value) != 0) {
         push(calif, "\0", cos_value / sin_value, temp_keys);
         exit_code = SUCCESS;
       } else
-        exit_code = FAILURE;
+        exit_code = CALCULATION_ERROR;
       break;
     }
     case ACOS: {
@@ -163,6 +162,12 @@ int push_math(math_fn *calif, int keys) {
       break;
     }
     case ACTG: {
+      POP_UNARY;
+      if (fabs(temp_value) != 0) {
+        push(calif, "\0", atan(1/temp_value), temp_keys);
+        exit_code = SUCCESS;
+      } else
+        exit_code = CALCULATION_ERROR;
       break;
     }
     default: {
@@ -179,7 +184,6 @@ int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys)
   int temp_keys = 0;
   if (texas->size == 0) {
     push(texas, data, value, keys);
-    // printf("PUSH_TEX VALUE: %s\tKEYS: %d\n", data, keys);
   }
   else {
     while (priority(keys) <= priority(texas->stack[texas->size].keys) && texas->size > 0) {
@@ -267,10 +271,6 @@ int sort_station(math_fn *stack) {
 
   free_stack(&texas);
   free_stack(&calif);
-  if (exit_code > 0) {
-    char *error[] = ERRORS;
-    fprintf(stderr, "%s\n", error[exit_code]);
-  }
 
   return exit_code;
 }
