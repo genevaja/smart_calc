@@ -1,6 +1,9 @@
 #!/bin/bash
+if [ -f tests/parser_test.c ]; then
+    echo "Files exist";
+    exit 155;
+fi
 
-rm fn*.txt 2>/dev/null
 ./math_fn.sh $1
 
 rm tests/parser_test.c 2>/dev/null

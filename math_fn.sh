@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -f ./fn_str.txt ]; then
+    echo "File exist"
+    exit 0;
+fi
+
+
 
 declare -a trig_fn=( "log" "ln" "sin" "cos" "tan" "ctg" "acos" "asin" "atan" "actg" "sqrt" )
 
