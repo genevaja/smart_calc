@@ -63,17 +63,26 @@ int push_math(math_fn *calif, int keys) {
       break;
     }
     case DIV: {
-      SUM_SUB(/);
+      POP_BINARY;
+      if (temp_value2 != 0) {
+        push(calif, "\0", temp_value / temp_value2, temp_keys);
+        exit_code = SUCCESS;
+      } else
+        return DIVISION_BY_ZERO;
+        // exit_code = DIVISION_BY_ZERO;
+      // SUM_SUB(/);
+      clean_var(temp_data, &temp_value, &temp_keys);
+      clean_var(temp_data2, &temp_value2, &temp_keys2);
       break;
     }
     case MOD: {
       POP_BINARY;
-      if (!strchr(temp_data2, '.') && !strchr(temp_data, '.')) {
-        push(calif, "\0", (double)((int)temp_value % (int)temp_value2), temp_keys);
+      double fmod_result = fmod(temp_value, temp_value2);
+      if (!__builtin_isnan(fmod_result)) {
+        push(calif, "\0", fmod(temp_value, temp_value2), temp_keys);
         exit_code = SUCCESS;
-      } else {
-        exit_code = WRONG_EXPRESSION;
-      }
+      } else
+          return NOT_A_NUMBER;
       clean_var(temp_data, &temp_value, &temp_keys);\
       clean_var(temp_data2, &temp_value2, &temp_keys2);\
       break;
@@ -140,7 +149,7 @@ int push_math(math_fn *calif, int keys) {
         push(calif, "\0", cos_value / sin_value, temp_keys);
         exit_code = SUCCESS;
       } else
-        exit_code = CALCULATION_ERROR;
+        return CALCULATION_ERROR;
       break;
     }
     case ACOS: {
@@ -167,7 +176,7 @@ int push_math(math_fn *calif, int keys) {
         push(calif, "\0", atan(1/temp_value), temp_keys);
         exit_code = SUCCESS;
       } else
-        exit_code = CALCULATION_ERROR;
+        return CALCULATION_ERROR;
       break;
     }
     default: {
@@ -179,18 +188,17 @@ int push_math(math_fn *calif, int keys) {
 
 
 int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {
-  int exit_code = FAILURE;
+  int exit_code = WRONG_EXPRESSION;
   double temp_value = 0.0;
   int temp_keys = 0;
   if (texas->size == 0) {
     push(texas, data, value, keys);
   }
   else {
-    while (priority(keys) <= priority(texas->stack[texas->size].keys) && texas->size > 0) {
+    while (priority(keys) <= priority(texas->stack[texas->size - 1].keys) && texas->size > 0) {
       char temp_data[MAX_BUF] = {'\0'};
       pop(texas, temp_data, &temp_value, &temp_keys);
-      if(push_math(calif, temp_keys)) {
-        exit_code = FAILURE;
+      if((exit_code = push_math(calif, temp_keys)) > 0) {
         return exit_code;
       }
       clean_var(temp_data, &temp_value, &temp_keys);
@@ -202,7 +210,7 @@ int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys)
 
 
 int sort_station(math_fn *stack) {
-  int exit_code = FAILURE;
+  int exit_code = WRONG_EXPRESSION;
   math_fn texas;
   math_fn calif;
   stack_init(&texas);
@@ -254,10 +262,7 @@ int sort_station(math_fn *stack) {
     clean_var(data, &value, &keys);
   }
   if (calif.size > 1) {
-    printf("Somewhere you are fucked\n");
-    free_stack(&calif);
-    free_stack(&texas);
-    return FAILURE;
+    exit_code = WRONG_EXPRESSION;
   }
 
   if (!exit_code) {

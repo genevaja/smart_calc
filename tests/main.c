@@ -4,10 +4,14 @@ int main() {
   int exit_code = FAILURE;
   math_fn stack;
   stack_init(&stack);
-  char string[] = {"((((2.123+2.321)+2.1005)^2.384)/6.211)*10"};
+  char *x_var = NULL;
+  char string[] = {"-0.345+0.345+(-0.345)+0.345+cos(0.505)*0.674"};
+  // char string[] = {"-0.345+0.345+(-0.345)+0.345+cos(0.505)*0.674"};
+  // char string[] = {"asin(0.950)"};
+  // char string[] = {"-0.345+0.345+(-0.345)+0.345+asin(0.950)"};
   // char string[] = {"0.1+0.1+8%3"};
   // char string[] = {"2.2^2.2+0.1+0.2-0.5"};
-  exit_code = parser(&stack, string);
+  exit_code = parser(&stack, string, x_var);
   // output(&stack);
   if (!exit_code) {
     exit_code = sort_station(&stack); 

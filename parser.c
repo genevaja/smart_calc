@@ -112,7 +112,7 @@ int check_dot(char *sub_string) {
 }
 
 
-int parser(math_fn *stack, char *string) {
+int parser(math_fn *stack, char *string, char *x_var) {
   int exit_code = SUCCESS;
   char *lexemes[] = LEXEME;
   // Сначала сбрасываем счётчик стека
@@ -121,6 +121,7 @@ int parser(math_fn *stack, char *string) {
   // Объявляем массив для извлечённой подстроки
   char sub_string[MAX_BUF] = {'\0'};
   size_t start = 0, i = 0;
+  double default_val = 0.0;
   // Пока есть что парсить
   int sub_str_flag = DEFAULT;
   while (start < strlen(string)) {
@@ -138,10 +139,20 @@ int parser(math_fn *stack, char *string) {
         // и обнуляем подстроку cо счётчиком подстроки
         if (!strcmp(sub_string, lexemes[j])) {
           int key_code = key_return(sub_string);
+          if (key_code == VAR) {
+            if (x_var != NULL) {
+              default_val = atof(x_var);
+              key_code = NUMBER;
+            } else {
+              exit_code = VAR_NOT_DEFINED;
+              break;
+            }
+          }
+
           // Check unary minus and plus
           if (!strcmp(sub_string, "-") || !strcmp(sub_string, "+"))
             key_code = check_unary(sub_string, stack);
-          push(stack, sub_string, 0.0, key_code);
+          push(stack, sub_string, default_val, key_code);
           memset(sub_string, '\0', MAX_BUF);
           i = DEFAULT; sub_str_flag = DEFAULT;
           push_res = SUCCESS;

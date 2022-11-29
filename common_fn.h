@@ -6,6 +6,8 @@
 #include <string.h>
 #include <math.h>
 
+#define ON 1
+#define OFF 0
 #define MAX_BUF 1024
 #define STACK_OVERFLOW -100
 #define STACK_UNDERFLOW -101
@@ -13,10 +15,12 @@
 #define FAILURE 1
 #define WRONG_EXPRESSION 2
 #define CALCULATION_ERROR 3
-#define ON 1
-#define OFF 0
+#define NOT_A_NUMBER 4
+#define DIVISION_BY_ZERO 5
+#define VAR_NOT_DEFINED 6
 
-#define ERRORS {"", "Failure", "Wrong expression", "Calculation error"}
+#define ERRORS {"", "Failure", "Wrong expression", "Calculation error", "NaN",\
+                "Division by zero", "Variable isn't defined"}
 
 
 
@@ -81,9 +85,11 @@ int parse_push(math_fn *stack, const char *string);
 int priority_op(int operation);
 
 // Парсер математических выражений
-int parser(math_fn *stack, char *string);
+int parser(math_fn *stack, char *string, char *x_var);
 
 int sort_station(math_fn *stack);
 int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys);
+
+int calc(char *expr, char *variables, double *result);
 
 #endif

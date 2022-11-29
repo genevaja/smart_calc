@@ -8,7 +8,6 @@ ifeq ($(shell uname -s),Linux)
 endif
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror -g -std=c11 -lm -pedantic
 CFLAGS = -Wall -Wextra -Werror -g -std=c11 -lm
 GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage
 
