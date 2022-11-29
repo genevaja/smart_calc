@@ -12,8 +12,11 @@
 #define SUCCESS 0
 #define FAILURE 1
 #define WRONG_EXPRESSION 2
+#define CALCULATION_ERROR 3
 #define ON 1
 #define OFF 0
+
+#define ERRORS {"", "Failure", "Wrong expression", "Calculation error"}
 
 
 
