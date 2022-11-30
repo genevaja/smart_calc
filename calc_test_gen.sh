@@ -49,25 +49,25 @@ START_TEST(calc_$i) {
   char *py_result = {\"$(echo $python_res)\"};
   char *x_var = {\"0.1522\"};
   exit_code = parser(&stack, expression, x_var);
-  char exit_msg[50] = {"\'"\\0"\'"}; 
+  char exit_msg[50] = {"\'"\0"\'"}; 
   if (exit_code > 0) {
     char *error[] = ERRORS;
     sprintf(exit_msg, \"%s\", error[exit_code]);
     ck_assert_str_eq(exit_msg, py_result);
+  } else {
+      char my_result[50] = {"\'"\0"\'"};
+      double result = 0.0;
+      exit_code = calc(expression, x_var, &result);
+      if (exit_code > 0) {
+        char *error[] = ERRORS;
+        sprintf(exit_msg, \"%s\", error[exit_code]);
+        ck_assert_str_eq(exit_msg, py_result);
+      } else {
+          sprintf(my_result, \"%.7f\", stack.stack[0].value);
+          ck_assert_str_eq_tol(my_result, py_result);
+      }
   }
 
-  ck_assert_int_eq(exit_code, 0);
-  char my_result[50] = {"'"\\0"'"};
-  double result = 0.0, float_py_result = atof(py_result);
-  exit_code = calc(expression, x_var, &result);
-  if (exit_code > 0) {
-    char *error[] = ERRORS;
-    sprintf(exit_msg, \"%s\", error[exit_code]);
-    ck_assert_str_eq(exit_msg, py_result);
-  }
-
-  sprintf(my_result, \"%.7f\", stack.stack[0].value);
-  ck_assert_double_eq_tol(result, float_py_result, 1e-7);
   free_stack(&stack);
 }
 END_TEST" >> "$test_file"

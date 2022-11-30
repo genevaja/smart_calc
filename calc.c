@@ -12,9 +12,9 @@ int calc(char *expr, char *variables, double *result) {
     }
   }
   free_stack(&stack);
-  if (exit_code > 0) {
-    char *error[] = ERRORS;
-    fprintf(stderr, "%s", error[exit_code]);
-  }
+  // if (exit_code > 0) {
+  //   char *error[] = ERRORS;
+  //   fprintf(stderr, "%s", error[exit_code]);
+  // }
   return exit_code;
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $2 =~ "on" ]]; then
-    rm fn*.txt
+    rm fn*.txt 2>/dev/null
 fi
 
 if [ -f ./fn_str.txt ]; then
