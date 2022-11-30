@@ -31,7 +31,8 @@ START_TEST(parser_$i) {
   stack_init(&stack);
   char *string[] = {$string};
   char *example = {\"$example\"};
-  exit_code = parser(&stack, example);
+  char *empty = \"0.362\";
+  exit_code = parser(&stack, example, empty);
   ck_assert_int_eq(exit_code, 0);
   ck_assert((int)sizeof(string)/8 == stack.size);
   if (((int)sizeof(string)/8) == stack.size) {

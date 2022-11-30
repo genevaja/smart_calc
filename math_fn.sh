@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ $2 =~ "on" ]]; then
+    rm fn*.txt
+fi
+
 if [ -f ./fn_str.txt ]; then
     # echo "File exist"
     exit 0;

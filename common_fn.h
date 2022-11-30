@@ -24,8 +24,8 @@
 
 
 
-#define LEXEME {"log", "ln", "sin", "cos", "tan", "ctg", "acos", "asin", "atan", \
-                "actg", "(", ")", "/", "*", "+", "-", "sqrt", "mod", "%", "^", "x", "y", "z" }
+#define LEXEME {"log", "ln", "sin", "cos", "tan", "acos", "asin", "atan", \
+                "(", ")", "/", "*", "+", "-", "sqrt", "mod", "%", "^", "x", "y", "z" }
 
 // MEM_ALLOC_FUNCTION(mem_alloc_char, char);
 

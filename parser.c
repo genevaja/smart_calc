@@ -43,16 +43,12 @@ int key_return(char *string) {
     key_code = COS;
   if (!strcmp(string, "tan"))
     key_code = TAN;
-  if (!strcmp(string, "ctg"))
-    key_code = CTG;
   if (!strcmp(string, "acos"))
     key_code = ACOS;
   if (!strcmp(string, "asin"))
     key_code = ASIN;
   if (!strcmp(string, "atan"))
     key_code = ATAN;
-  if (!strcmp(string, "actg"))
-    key_code = ACTG;
   if (!strcmp(string, "("))
     key_code = BRO;
   if (!strcmp(string, ")"))
