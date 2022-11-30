@@ -9,6 +9,10 @@ int calc(char *expr, char *variables, double *result) {
     exit_code = sort_station(&stack);
     if (!exit_code) {
       *result = stack.stack[0].value;
+      if (__builtin_isnan(*result)) {
+        // printf("ISNAN\n");
+        exit_code = TOO_LONG;
+      }
     }
   }
   free_stack(&stack);

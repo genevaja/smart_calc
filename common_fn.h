@@ -18,9 +18,11 @@
 #define NOT_A_NUMBER 4
 #define DIVISION_BY_ZERO 5
 #define VAR_NOT_DEFINED 6
+#define TOO_LONG 7
+#define MATH_DOMAIN_ERROR 8
 
 #define ERRORS {"", "Failure", "Wrong expression", "Calculation error", "NaN",\
-                "Division by zero", "Variable isn't defined"}
+                "Division by zero", "Variable isn't defined", "Too long weird result", "math domain error"}
 
 
 

@@ -28,7 +28,7 @@ for (( i=1; i<=$qty_fn; i++)); do
     if [[ $python_res == "unexpected EOF while parsing (<string>, line 1)" ]]; then
         python_res=$(echo $python_res | sed -e 's/unexpected EOF while parsing (<string>, line 1)/Wrong expression/g')
     elif [[ $(expr length "$python_res") -gt 30 ]]; then
-        python_res="Unexpected result"
+        python_res="Too long weird result"
     fi
     if [[ "$python_res" =~ ^[-]{1}[0-9]*[.,]?[0-9]+$ ]]; then
         python_res=$(echo ${python_res:0:10})
@@ -48,24 +48,17 @@ START_TEST(calc_$i) {
   char *expression = {\"$example\"};
   char *py_result = {\"$(echo $python_res)\"};
   char *x_var = {\"0.1522\"};
-  exit_code = parser(&stack, expression, x_var);
-  char exit_msg[50] = {"\'"\0"\'"}; 
+  double result = 0.0;
+  char exit_msg[100] = {"\'"\0"\'"}; 
+  exit_code = calc(expression, x_var, &result);
   if (exit_code > 0) {
     char *error[] = ERRORS;
     sprintf(exit_msg, \"%s\", error[exit_code]);
     ck_assert_str_eq(exit_msg, py_result);
   } else {
-      char my_result[50] = {"\'"\0"\'"};
-      double result = 0.0;
-      exit_code = calc(expression, x_var, &result);
-      if (exit_code > 0) {
-        char *error[] = ERRORS;
-        sprintf(exit_msg, \"%s\", error[exit_code]);
-        ck_assert_str_eq(exit_msg, py_result);
-      } else {
-          sprintf(my_result, \"%.7f\", stack.stack[0].value);
-          ck_assert_str_eq_tol(my_result, py_result);
-      }
+      char my_result[100] = {"\'"\0"\'"};
+      sprintf(my_result, \"%.7f\", result);
+      ck_assert_double_eq_tol(result, atof(py_result), 1e-7);
   }
 
   free_stack(&stack);
