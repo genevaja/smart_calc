@@ -4,6 +4,16 @@
 #define DIGIT 2
 #define DEFAULT 0
 
+int last_elem_check(math_fn *stack) {
+  if (stack->stack[stack->size - 1].keys != 21 || 
+      stack->stack[stack->size - 1].keys != 8) {
+    return WRONG_EXPRESSION;
+  }
+  else
+    return SUCCESS;
+}
+
+
 int check_unary(char *sub_string, math_fn *stack) {
   int check_result = -1;
   if (stack->size == 0) {
@@ -194,5 +204,8 @@ int parser(math_fn *stack, char *string, char *x_var) {
     }
   }
   // printf("Sub_string: %s\n", sub_string);
+  // Проверяем последний элемент назакрытую скобку или число
+  exit_code = last_elem_check(stack);
+
   return exit_code; 
 }

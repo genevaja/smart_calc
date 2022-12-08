@@ -1,9 +1,27 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
-!_TAG_PROGRAM_NAME	Exuberant Ctags	//
-!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/albert/Documents/Programming/s21/C7/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20220828.0/
+$(EXEC_GCOV)	sanit.mk	/^$(EXEC_GCOV): %.out: %.o $(TEST_OBJS)$/;"	t
+$(LIB_OBJS)	Makefile	/^$(LIB_OBJS): %.o : $(SOURCE_DIR)\/%.c$/;"	t
+$(SRC_OBJS)	sanit.mk	/^$(SRC_OBJS): %.o : $(SRC_DIR)\/%.c$/;"	t
+$(TEST_EXEC)	Makefile	/^$(TEST_EXEC): %.out: %.o $(TEST_OBJS)$/;"	t
+$(TEST_OBJS)	Makefile	/^$(TEST_OBJS): %.o : $(TEST_DIR)\/%.c$/;"	t
+$(TEST_OBJS)	sanit.mk	/^$(TEST_OBJS): %.o : $(TEST_DIR)\/%.c$/;"	t
+%	sanit.mk	/^%:$/;"	t
+%.o	Makefile	/^$(LIB_OBJS): %.o : $(SOURCE_DIR)\/%.c$/;"	t
+%.o	Makefile	/^$(TEST_OBJS): %.o : $(TEST_DIR)\/%.c$/;"	t
+%.o	sanit.mk	/^$(SRC_OBJS): %.o : $(SRC_DIR)\/%.c$/;"	t
+%.o	sanit.mk	/^$(TEST_OBJS): %.o : $(TEST_DIR)\/%.c$/;"	t
+%.out	Makefile	/^$(TEST_EXEC): %.out: %.o $(TEST_OBJS)$/;"	t
+%.out	sanit.mk	/^$(EXEC_GCOV): %.out: %.o $(TEST_OBJS)$/;"	t
 ACOS	common_fn.h	/^  ACOS, \/\/ 17$/;"	e	enum:operations
 ACTG	common_fn.h	/^  ACTG, \/\/ 20$/;"	e	enum:operations
 ASIN	common_fn.h	/^  ASIN, \/\/ 18$/;"	e	enum:operations
@@ -11,7 +29,7 @@ ATAN	common_fn.h	/^  ATAN, \/\/ 19$/;"	e	enum:operations
 BIN	Makefile	/^BIN = bin$/;"	m
 BRC	common_fn.h	/^  BRC, \/\/ 8$/;"	e	enum:operations
 BRO	common_fn.h	/^  BRO, \/\/ 7$/;"	e	enum:operations
-CALCULATION_ERROR	common_fn.h	17;"	d
+CALCULATION_ERROR	common_fn.h	/^#define CALCULATION_ERROR /;"	d
 CC	Makefile	/^CC = gcc$/;"	m
 CC	sanit.mk	/^CC = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror -g -std=c11 -lm$/;"	m
@@ -22,20 +40,26 @@ CHECK_FLAGS	sanit.mk	/^    CHECK_FLAGS = -lcheck -lm -lpthread -lrt -lsubunit$/;
 CHECK_FLAGS	sanit.mk	/^    CHECK_FLAGS = -lcheck -lm -lpthread$/;"	m
 COS	common_fn.h	/^  COS, \/\/ 14$/;"	e	enum:operations
 CTG	common_fn.h	/^  CTG, \/\/ 16$/;"	e	enum:operations
-DEFAULT	parser.c	5;"	d	file:
-DIGIT	parser.c	4;"	d	file:
+Chapter I	README_RUS.md	/^## Chapter I$/;"	s	chapter:SmartCalc v1.0
+Chapter II	README_RUS.md	/^## Chapter II$/;"	s	chapter:SmartCalc v1.0
+Chapter III	README_RUS.md	/^## Chapter III$/;"	s	chapter:SmartCalc v1.0
+Contents	README_RUS.md	/^## Contents$/;"	s	chapter:SmartCalc v1.0
+DEFAULT	parser.c	/^#define DEFAULT /;"	d	file:
+DIGIT	parser.c	/^#define DIGIT /;"	d	file:
 DIV	common_fn.h	/^  DIV, \/\/ 3$/;"	e	enum:operations
-DIVISION_BY_ZERO	common_fn.h	19;"	d
-ERRORS	common_fn.h	24;"	d
+DIVISION_BY_ZERO	common_fn.h	/^#define DIVISION_BY_ZERO /;"	d
+ERRORS	common_fn.h	/^#define ERRORS /;"	d
 EXEC_GCOV	sanit.mk	/^EXEC_GCOV = $(TEST_OBJS:%.o=%.out) $/;"	m
-FAILURE	common_fn.h	15;"	d
-FAILURE	temp/main.c	5;"	d	file:
+FAILURE	common_fn.h	/^#define FAILURE /;"	d
+FAILURE	temp/main.c	/^#define FAILURE /;"	d	file:
 GCOV_FLAGS	Makefile	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 GCOV_FLAGS	sanit.mk	/^GCOV_FLAGS = -fPIC -fprofile-arcs -ftest-coverage$/;"	m
 INCL_LIB	Makefile	/^INCL_LIB = -L.$/;"	m
 INCL_LIB	sanit.mk	/^INCL_LIB = -L.$/;"	m
-LETTER	parser.c	3;"	d	file:
-LEXEME	common_fn.h	29;"	d
+Information	README_RUS.md	/^## Information$/;"	s	chapter:SmartCalc v1.0
+Introduction	README_RUS.md	/^## Introduction$/;"	s	chapter:SmartCalc v1.0
+LETTER	parser.c	/^#define LETTER /;"	d	file:
+LEXEME	common_fn.h	/^#define LEXEME /;"	d
 LIB_NAME	Makefile	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_NAME	sanit.mk	/^LIB_NAME = libcalc_backend.a$/;"	m
 LIB_OBJS	Makefile	/^LIB_OBJS := $(LIB_SRC:$(SOURCE_DIR)\/%.c=%.o)$/;"	m
@@ -43,145 +67,150 @@ LIB_OUT	Makefile	/^LIB_OUT = libcalc_backend.a$/;"	m
 LIB_SRC	Makefile	/^LIB_SRC := $(wildcard $(SOURCE_DIR)\/*.c)$/;"	m
 LN	common_fn.h	/^  LN, \/\/ 12$/;"	e	enum:operations
 LOG	common_fn.h	/^  LOG, \/\/ 11$/;"	e	enum:operations
-MATH_DOMAIN_ERROR	common_fn.h	22;"	d
-MAX_BUF	common_fn.h	11;"	d
-MAX_BUF	temp/main.c	6;"	d	file:
+MATH_DOMAIN_ERROR	common_fn.h	/^#define MATH_DOMAIN_ERROR /;"	d
+MAX_BUF	common_fn.h	/^#define MAX_BUF /;"	d
+MAX_BUF	temp/main.c	/^#define MAX_BUF /;"	d	file:
 MINUS	common_fn.h	/^  MINUS, \/\/ undefined minus \/\/ 9$/;"	e	enum:operations
 MOD	common_fn.h	/^  MOD, \/\/ 4$/;"	e	enum:operations
 MUL	common_fn.h	/^  MUL, \/\/ 2$/;"	e	enum:operations
-NOT_A_NUMBER	common_fn.h	18;"	d
+NOT_A_NUMBER	common_fn.h	/^#define NOT_A_NUMBER /;"	d
 NUMBER	common_fn.h	/^  NUMBER, \/\/ 21$/;"	e	enum:operations
-OFF	common_fn.h	10;"	d
-ON	common_fn.h	9;"	d
+OFF	common_fn.h	/^#define OFF /;"	d
+ON	common_fn.h	/^#define ON /;"	d
 PLUS	common_fn.h	/^  PLUS, \/\/ unary plus 10$/;"	e	enum:operations
-POP_BINARY	notation.c	7;"	d	file:
-POP_UNARY	notation.c	3;"	d	file:
+POP_BINARY	notation.c	/^#define POP_BINARY /;"	d	file:
+POP_UNARY	notation.c	/^#define POP_UNARY /;"	d	file:
 POW	common_fn.h	/^  POW, \/\/ 5$/;"	e	enum:operations
+Part 1. Реализация SmartCalc v1.0	README_RUS.md	/^## Part 1. Реализация SmartCalc v1.0$/;"	s	chapter:SmartCalc v1.0
+Part 2. Дополнительно. Кредитный калькулятор	README_RUS.md	/^## Part 2. Дополнительно. Кредитный калькулятор$/;"	s	chapter:SmartCalc v1.0
+Part 3. Дополнительно. Депозитный калькулятор	README_RUS.md	/^## Part 3. Дополнительно. Депозитный калькулятор$/;"	s	chapter:SmartCalc v1.0
+Preamble	README_RUS.md	/^## Preamble$/;"	s	chapter:SmartCalc v1.0
 SANIT_FLAGS	sanit.mk	/^SANIT_FLAGS = -fsanitize=address$/;"	m
 SIN	common_fn.h	/^  SIN, \/\/ 13$/;"	e	enum:operations
 SOURCE_DIR	Makefile	/^SOURCE_DIR = .$/;"	m
 SQRT	common_fn.h	/^  SQRT, \/\/ 6$/;"	e	enum:operations
-SRC_COMMON_FN_H_	common_fn.h	2;"	d
+SRC_COMMON_FN_H_	common_fn.h	/^#define SRC_COMMON_FN_H_$/;"	d
 SRC_DIR	sanit.mk	/^SRC_DIR = .$/;"	m
 SRC_OBJS	sanit.mk	/^SRC_OBJS := $(SRC_SRC:%.c=$(SRC_DIR)\/%.o)$/;"	m
 SRC_SRC	sanit.mk	/^SRC_SRC := $(wildcard $(SRC_DIR)\/*.c)$/;"	m
-STACK_OVERFLOW	common_fn.h	12;"	d
-STACK_UNDERFLOW	common_fn.h	13;"	d
+STACK_OVERFLOW	common_fn.h	/^#define STACK_OVERFLOW /;"	d
+STACK_UNDERFLOW	common_fn.h	/^#define STACK_UNDERFLOW /;"	d
 START_TEST	tests/calc_test.c	/^START_TEST(calc_1) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_10) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_2) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_3) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_4) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_5) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_6) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_7) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_8) {$/;"	f
-START_TEST	tests/calc_test.c	/^START_TEST(calc_9) {$/;"	f
+START_TEST	tests/calc_test.c	/^START_TEST(calc_10) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_2) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_3) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_4) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_5) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_6) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_7) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_8) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/calc_test.c	/^START_TEST(calc_9) {$/;"	f	typeref:typename:END_TEST
 START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_1) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_10) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_100) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_11) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_12) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_13) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_14) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_15) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_16) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_17) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_18) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_19) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_2) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_20) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_21) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_22) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_23) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_24) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_25) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_26) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_27) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_28) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_29) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_3) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_30) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_31) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_32) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_33) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_34) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_35) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_36) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_37) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_38) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_39) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_4) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_40) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_41) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_42) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_43) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_44) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_45) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_46) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_47) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_48) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_49) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_5) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_50) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_51) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_52) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_53) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_54) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_55) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_56) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_57) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_58) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_59) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_6) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_60) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_61) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_62) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_63) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_64) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_65) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_66) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_67) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_68) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_69) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_7) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_70) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_71) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_72) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_73) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_74) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_75) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_76) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_77) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_78) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_79) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_8) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_80) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_81) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_82) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_83) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_84) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_85) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_86) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_87) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_88) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_89) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_9) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_90) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_91) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_92) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_93) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_94) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_95) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_96) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_97) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_98) {$/;"	f
-START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_99) {$/;"	f
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_10) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_100) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_11) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_12) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_13) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_14) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_15) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_16) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_17) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_18) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_19) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_2) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_20) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_21) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_22) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_23) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_24) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_25) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_26) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_27) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_28) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_29) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_3) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_30) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_31) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_32) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_33) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_34) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_35) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_36) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_37) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_38) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_39) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_4) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_40) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_41) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_42) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_43) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_44) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_45) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_46) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_47) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_48) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_49) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_5) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_50) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_51) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_52) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_53) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_54) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_55) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_56) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_57) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_58) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_59) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_6) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_60) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_61) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_62) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_63) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_64) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_65) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_66) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_67) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_68) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_69) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_7) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_70) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_71) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_72) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_73) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_74) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_75) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_76) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_77) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_78) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_79) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_8) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_80) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_81) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_82) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_83) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_84) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_85) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_86) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_87) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_88) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_89) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_9) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_90) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_91) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_92) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_93) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_94) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_95) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_96) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_97) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_98) {$/;"	f	typeref:typename:END_TEST
+START_TEST	tests/temp/parser_test.c	/^START_TEST(parser_99) {$/;"	f	typeref:typename:END_TEST
 SUB	common_fn.h	/^  SUB, \/\/ binary minus 1$/;"	e	enum:operations
-SUCCESS	common_fn.h	14;"	d
-SUCCESS	temp/main.c	4;"	d	file:
+SUCCESS	common_fn.h	/^#define SUCCESS /;"	d
+SUCCESS	temp/main.c	/^#define SUCCESS /;"	d	file:
 SUM	common_fn.h	/^  SUM = 0,$/;"	e	enum:operations
-SUM_SUB	notation.c	13;"	d	file:
+SUM_SUB	notation.c	/^#define SUM_SUB(/;"	d	file:
+SmartCalc v1.0	README_RUS.md	/^# SmartCalc v1.0$/;"	c
 TAN	common_fn.h	/^  TAN, \/\/ 15$/;"	e	enum:operations
 TEST_DIR	Makefile	/^TEST_DIR = .\/tests$/;"	m
 TEST_DIR	sanit.mk	/^TEST_DIR = .\/tests$/;"	m
@@ -190,57 +219,79 @@ TEST_OBJS	Makefile	/^TEST_OBJS := $(TEST_SRC:$(TEST_DIR)\/%.c=%.o)$/;"	m
 TEST_OBJS	sanit.mk	/^TEST_OBJS := $(TEST_SRC:$(TEST_DIR)\/%.c=%.o)$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC := $(wildcard $(TEST_DIR)\/*.c)$/;"	m
 TEST_SRC	sanit.mk	/^TEST_SRC := $(wildcard $(TEST_DIR)\/*.c)$/;"	m
-TOO_LONG	common_fn.h	21;"	d
+TOO_LONG	common_fn.h	/^#define TOO_LONG /;"	d
 VAR	common_fn.h	/^  VAR \/\/22 variables$/;"	e	enum:operations
-VAR_NOT_DEFINED	common_fn.h	20;"	d
-WRONG_EXPRESSION	common_fn.h	16;"	d
-calc	calc.c	/^int calc(char *expr, char *variables, double *result) {$/;"	f
-check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f
-check_unary	parser.c	/^int check_unary(char *sub_string, math_fn *stack) {$/;"	f
-clean_var	notation.c	/^void clean_var(char *data, double *value, int *keys) {$/;"	f
-data	common_fn.h	/^  char *data;$/;"	m	struct:stack_unit
-data	temp/main.c	/^  char *data;$/;"	m	struct:stack_unit	file:
+VAR_NOT_DEFINED	common_fn.h	/^#define VAR_NOT_DEFINED /;"	d
+WRONG_EXPRESSION	common_fn.h	/^#define WRONG_EXPRESSION /;"	d
+all	Makefile	/^all: $(TEST_OBJS) $(LIB_OBJS) libcalc_backend.a$/;"	t
+all	sanit.mk	/^all: $(SRC_OBJS) $(EXEC_GCOV) execute $/;"	t
+build	Makefile	/^build: $(TEST_EXEC)$/;"	t
+calc	calc.c	/^int calc(char *expr, char *variables, double *result) {$/;"	f	typeref:typename:int
+check_dot	parser.c	/^int check_dot(char *sub_string) {$/;"	f	typeref:typename:int
+check_unary	parser.c	/^int check_unary(char *sub_string, math_fn *stack) {$/;"	f	typeref:typename:int
+clean	Makefile	/^clean:$/;"	t
+clean_all	Makefile	/^clean_all: clean_lib clean$/;"	t
+clean_lib	Makefile	/^clean_lib:$/;"	t
+clean_var	notation.c	/^void clean_var(char *data, double *value, int *keys) {$/;"	f	typeref:typename:void
+data	common_fn.h	/^  char *data;$/;"	m	struct:stack_unit	typeref:typename:char *
+data	temp/main.c	/^  char *data;$/;"	m	struct:stack_unit	typeref:typename:char *	file:
 ev_print_console	main.py	/^def ev_print_console(str_value):$/;"	f
 ev_print_file	main.py	/^def ev_print_file(value_list):$/;"	f
-fifo_out	common_fn.c	/^int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys) {$/;"	f
-free_stack	common_fn.c	/^void free_stack(math_fn *stack) {$/;"	f
-free_stack	temp/main.c	/^void free_stack(math_fn *stack) {$/;"	f
-input_text	common_fn.c	/^char *input_text(char *a) {$/;"	f
-key_return	parser.c	/^int key_return(char *string) {$/;"	f
-keys	common_fn.h	/^  int keys;$/;"	m	struct:stack_unit
-keys	temp/main.c	/^  int keys;$/;"	m	struct:stack_unit	file:
-letter_check	parser.c	/^int letter_check(char letter) {$/;"	f
-main	temp/main.c	/^int main() {$/;"	f
-main	tests/calc_test.c	/^int main() {$/;"	f
-main	tests/temp/main.c	/^int main() {$/;"	f
-main	tests/temp/parser_test.c	/^int main() {$/;"	f
+execute	sanit.mk	/^execute: $(EXEC_GCOV)$/;"	t
+fifo_out	common_fn.c	/^int fifo_out(int *queue, math_fn *stack, char *data, double *value, int *keys) {$/;"	f	typeref:typename:int
+free_stack	common_fn.c	/^void free_stack(math_fn *stack) {$/;"	f	typeref:typename:void
+free_stack	temp/main.c	/^void free_stack(math_fn *stack) {$/;"	f	typeref:typename:void
+gcov_report	Makefile	/^gcov_report: clean$/;"	t
+input_text	common_fn.c	/^char *input_text(char *a) {$/;"	f	typeref:typename:char *
+key_return	parser.c	/^int key_return(char *string) {$/;"	f	typeref:typename:int
+keys	common_fn.h	/^  int keys;$/;"	m	struct:stack_unit	typeref:typename:int
+keys	temp/main.c	/^  int keys;$/;"	m	struct:stack_unit	typeref:typename:int	file:
+last_elem_check	parser.c	/^int last_elem_check(math_fn *stack) {$/;"	f	typeref:typename:int
+letter_check	parser.c	/^int letter_check(char letter) {$/;"	f	typeref:typename:int
+libcalc_backend.a	Makefile	/^libcalc_backend.a: $(LIB_OBJS) $/;"	t
+main	calc_test_gen.sh	/^int main() {$/;"	f
+main	pars_test_gen.sh	/^int main() {$/;"	f
+main	temp/main.c	/^int main() {$/;"	f	typeref:typename:int
+main	tests/calc_test.c	/^int main() {$/;"	f	typeref:typename:int
+main	tests/main.c	/^int main() {$/;"	f	typeref:typename:int
+main	tests/temp/parser_test.c	/^int main() {$/;"	f	typeref:typename:int
 math_fn	common_fn.h	/^} math_fn;$/;"	t	typeref:struct:stack_com
 math_fn	temp/main.c	/^} math_fn;$/;"	t	typeref:struct:stack_com	file:
 operations	common_fn.h	/^enum operations {$/;"	g
-output	common_fn.c	/^void output(math_fn *stack) {$/;"	f
+output	common_fn.c	/^void output(math_fn *stack) {$/;"	f	typeref:typename:void
 parcer_file	main.py	/^def parcer_file():$/;"	f
-parser	parser.c	/^int parser(math_fn *stack, char *string, char *x_var) {$/;"	f
-pop	common_fn.c	/^int pop(math_fn *stack, char *data, double *value, int *keys) {$/;"	f
-priority	notation.c	/^int priority(int operation) {$/;"	f
-push	common_fn.c	/^int push(math_fn *stack, char *data, double value, int keys) {$/;"	f
-push_math	notation.c	/^int push_math(math_fn *calif, int keys) {$/;"	f
-push_tex	notation.c	/^int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {$/;"	f
-simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f
-size	common_fn.h	/^  int size;$/;"	m	struct:stack_com
-size	temp/main.c	/^  int size;$/;"	m	struct:stack_com	file:
-sort_station	notation.c	/^int sort_station(math_fn *stack) {$/;"	f
-sprintf_test	tests/calc_test.c	/^Suite * sprintf_test(void) {$/;"	f
-sprintf_test	tests/temp/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f
-stack	common_fn.h	/^  stack_t *stack;$/;"	m	struct:stack_com
-stack	temp/main.c	/^  stack_t *stack;$/;"	m	struct:stack_com	file:
+parser	parser.c	/^int parser(math_fn *stack, char *string, char *x_var) {$/;"	f	typeref:typename:int
+pop	common_fn.c	/^int pop(math_fn *stack, char *data, double *value, int *keys) {$/;"	f	typeref:typename:int
+priority	notation.c	/^int priority(int operation) {$/;"	f	typeref:typename:int
+push	common_fn.c	/^int push(math_fn *stack, char *data, double value, int keys) {$/;"	f	typeref:typename:int
+push_math	notation.c	/^int push_math(math_fn *calif, int keys) {$/;"	f	typeref:typename:int
+push_tex	notation.c	/^int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys) {$/;"	f	typeref:typename:int
+sanitizer	Makefile	/^sanitizer: clean_all$/;"	t
+simple_pars	common_fn.c	/^char *simple_pars(const char *string, int *i) {$/;"	f	typeref:typename:char *
+size	common_fn.h	/^  int size;$/;"	m	struct:stack_com	typeref:typename:int
+size	temp/main.c	/^  int size;$/;"	m	struct:stack_com	typeref:typename:int	file:
+sort_station	notation.c	/^int sort_station(math_fn *stack) {$/;"	f	typeref:typename:int
+sprintf_test	calc_test_gen.sh	/^    s = sprintf_test();$/;"	f
+sprintf_test	pars_test_gen.sh	/^    s = sprintf_test();$/;"	f
+sprintf_test	tests/calc_test.c	/^Suite * sprintf_test(void) {$/;"	f	typeref:typename:END_TEST Suite *
+sprintf_test	tests/temp/parser_test.c	/^Suite * sprintf_test(void) {$/;"	f	typeref:typename:END_TEST Suite *
+stack	common_fn.h	/^  stack_t *stack;$/;"	m	struct:stack_com	typeref:typename:stack_t *
+stack	temp/main.c	/^  stack_t *stack;$/;"	m	struct:stack_com	typeref:typename:stack_t *	file:
 stack_com	common_fn.h	/^typedef struct stack_com {$/;"	s
 stack_com	temp/main.c	/^typedef struct stack_com {$/;"	s	file:
-stack_init	common_fn.c	/^int stack_init(math_fn *stack) {$/;"	f
-stack_init	temp/main.c	/^int stack_init(math_fn *stack) {$/;"	f
-stack_output	common_fn.c	/^void stack_output(math_fn *stack) {$/;"	f
+stack_init	common_fn.c	/^int stack_init(math_fn *stack) {$/;"	f	typeref:typename:int
+stack_init	temp/main.c	/^int stack_init(math_fn *stack) {$/;"	f	typeref:typename:int
+stack_output	common_fn.c	/^void stack_output(math_fn *stack) {$/;"	f	typeref:typename:void
 stack_t	common_fn.h	/^} stack_t;$/;"	t	typeref:struct:stack_unit
 stack_t	temp/main.c	/^} stack_t;$/;"	t	typeref:struct:stack_unit	file:
 stack_unit	common_fn.h	/^typedef struct stack_unit {$/;"	s
 stack_unit	temp/main.c	/^typedef struct stack_unit {$/;"	s	file:
-value	common_fn.h	/^  double value;$/;"	m	struct:stack_unit
-value	temp/main.c	/^  double value;$/;"	m	struct:stack_unit	file:
+style	Makefile	/^style:$/;"	t
+test	Makefile	/^test: libcalc_backend.a build$/;"	t
+valgrind	Makefile	/^valgrind: libcalc_backend.a $(TEST_EXEC)$/;"	t
+value	common_fn.h	/^  double value;$/;"	m	struct:stack_unit	typeref:typename:double
+value	temp/main.c	/^  double value;$/;"	m	struct:stack_unit	typeref:typename:double	file:
+Алгоритм Дейкстры	README_RUS.md	/^### Алгоритм Дейкстры$/;"	S	section:SmartCalc v1.0""Information
+Историческая справка	README_RUS.md	/^### Историческая справка$/;"	S	section:SmartCalc v1.0""Information
+Польская прямая и обратная нотации	README_RUS.md	/^### Польская прямая и обратная нотации$/;"	S	section:SmartCalc v1.0""Information
+Реализация алгоритма	README_RUS.md	/^#### Реализация алгоритма$/;"	t	subsection:SmartCalc v1.0""Information""Алгоритм Дейкстры

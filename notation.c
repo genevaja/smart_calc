@@ -2,11 +2,15 @@
 
 #define POP_UNARY \
       char temp_data[MAX_BUF] = {'\0'}; double temp_value = 0.0; int temp_keys = 0;\
+      if (calif->size < 1)\
+        return WRONG_EXPRESSION;\
       pop(calif, temp_data, &temp_value, &temp_keys);\
 
 #define POP_BINARY \
       char temp_data[MAX_BUF] = {'\0'}; double temp_value = 0.0; int temp_keys = 0;\
       char temp_data2[MAX_BUF] = {'\0'}; double temp_value2 = 0.0; int temp_keys2 = 0;\
+      if (calif->size < 2)\
+        return WRONG_EXPRESSION;\
       pop(calif, temp_data2, &temp_value2, &temp_keys2);\
       pop(calif, temp_data, &temp_value, &temp_keys);\
 
@@ -95,8 +99,13 @@ int push_math(math_fn *calif, int keys) {
     }
     case SQRT: {
       POP_UNARY;
-      push(calif, "\0", sqrt(temp_value), temp_keys);
-      exit_code = SUCCESS;
+      if (temp_value > 0.0) {
+        push(calif, "\0", sqrt(temp_value), temp_keys);
+        exit_code = SUCCESS;
+      } else {
+        // printf("HERE\n");
+        return MATH_DOMAIN_ERROR;
+      }
       break;
     }
     case MINUS: {
@@ -154,8 +163,13 @@ int push_math(math_fn *calif, int keys) {
     }
     case ACOS: {
       POP_UNARY;
-      push(calif, "\0", acos(temp_value), temp_keys);
-      exit_code = SUCCESS;
+      if (temp_value <= 1 && temp_value >= -1) {
+        push(calif, "\0", acos(temp_value), temp_keys);
+        exit_code = SUCCESS;
+      } else {
+        // printf("HERE!!!\n");
+        return MATH_DOMAIN_ERROR;
+      }
       break;
     }
     case ASIN: {
@@ -193,9 +207,10 @@ int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys)
   int temp_keys = 0;
   if (texas->size == 0) {
     push(texas, data, value, keys);
+    exit_code = SUCCESS;
   }
   else {
-    while (priority(keys) <= priority(texas->stack[texas->size - 1].keys) && texas->size > 0) {
+    while (texas->size > 0 && priority(keys) <= priority(texas->stack[texas->size - 1].keys)) {
       char temp_data[MAX_BUF] = {'\0'};
       pop(texas, temp_data, &temp_value, &temp_keys);
       if((exit_code = push_math(calif, temp_keys)) > 0) {
@@ -204,6 +219,7 @@ int push_tex(math_fn *texas, math_fn *calif, char *data, double value, int keys)
       clean_var(temp_data, &temp_value, &temp_keys);
     }
     push(texas, data, value, keys);
+    exit_code = SUCCESS;
   }
   return exit_code;
 }
@@ -228,12 +244,12 @@ int sort_station(math_fn *stack) {
       case BRO: {
         push(&texas, data, value, keys);
         clean_var(data, &value, &keys);
-        breket_flag = ON;
+        breket_flag++;
         break;
       }
       case BRC: {
         while (texas.stack[texas.size - 1].keys != BRO) {
-          if (texas.size > 0 && breket_flag == ON) {
+          if (texas.size > 0 && breket_flag > 0) {
             pop(&texas, data, &value, &keys);
             if ((exit_code = push_math(&calif, keys)) > 0) {
               break;
@@ -246,11 +262,17 @@ int sort_station(math_fn *stack) {
           }
         }
         pop(&texas, data, &value, &keys);
+        breket_flag--;
         clean_var(data, &value, &keys);
         break;
       }
       default: {
-        push_tex(&texas, &calif, data, value, keys);
+        exit_code = push_tex(&texas, &calif, data, value, keys);
+        if (exit_code) {
+          free_stack(&texas);
+          free_stack(&calif);
+          return exit_code;
+        }
       }
     }
   }
