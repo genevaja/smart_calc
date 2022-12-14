@@ -15,6 +15,9 @@ int calc(char *expr, char *variables, double *result) {
       }
     }
   }
+  // Если ошибка на парсере, то перед завершением программы можно заменить код на math_domain_error
+  // if (exit_code == 9)
+  //   exit_code = 8;
   free_stack(&stack);
   // if (exit_code > 0) {
   //   char *error[] = ERRORS;

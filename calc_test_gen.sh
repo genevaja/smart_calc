@@ -22,14 +22,14 @@ printf "#include \"../header.h\"\n" >> "$test_file"
 
 for (( i=1; i<=$qty_fn; i++)); do
     py_string=$(head -$i fn_str.txt | tail +$i  | sed -e 's/log/log10/g' |
-             sed -e 's/ln/log1p/g' | sed -e 's/\^/\*\*/g' | sed -e 's/x/0.1522/g' )
+             sed -e 's/ln/log/g' | sed -e 's/\^/\*\*/g' | sed -e 's/x/0.1522/g' )
     example=$(head -$i fn_str.txt | tail +$i)
     python_res=$(python3 main.py "$py_string")
-    if [[ $python_res == "unexpected EOF while parsing (<string>, line 1)" ]]; then
-        python_res=$(echo $python_res | sed -e 's/unexpected EOF while parsing (<string>, line 1)/Wrong expression/g')
-    elif [[ $(expr length "$python_res") -gt 30 ]]; then
-        python_res="Too long weird result"
-    fi
+    # if [[ $python_res == "unexpected EOF while parsing (<string>, line 1)" ]]; then
+    #     python_res=$(echo $python_res | sed -e 's/unexpected EOF while parsing (<string>, line 1)/Wrong expression/g')
+    # elif [[ $(expr length "$python_res") -gt 30 ]]; then
+    #     python_res="Too long weird result"
+    # fi
     if [[ "$python_res" =~ ^[-]{1}[0-9]*[.,]?[0-9]+$ ]]; then
         python_res=$(echo ${python_res:0:10})
     fi

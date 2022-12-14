@@ -4,13 +4,14 @@
 #define DIGIT 2
 #define DEFAULT 0
 
+// Если последний элемент не цифра или не закрытая скобка, то возвращаем ошибку
 int last_elem_check(math_fn *stack) {
-  if (stack->stack[stack->size - 1].keys != 21 || 
-      stack->stack[stack->size - 1].keys != 8) {
-    return WRONG_EXPRESSION;
+  if (stack->stack[stack->size - 1].keys == 8 || 
+      stack->stack[stack->size - 1].keys == 21) {
+    return SUCCESS;
   }
   else
-    return SUCCESS;
+    return WRONG_EXPRESSION_PARSER;
 }
 
 

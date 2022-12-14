@@ -16,7 +16,8 @@ int main() {
     // printf("EXIT MESSAGE: %s\n", exit_msg);
     if (strcmp(py_result, exit_msg)) {
       printf("PY_RES: %s\tEXIT_MSG: %s\n", py_result, exit_msg);
-    }
+    } else
+      printf("TEST DONE\n");
 
   } else {
       char my_result[100] = {'\0'};

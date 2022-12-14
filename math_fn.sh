@@ -72,9 +72,9 @@ for (( lines=1; lines<=$default; lines++)); do
             fi
         fi 
     done
-    unary_expr="\"-\", \"0.345\", \"+\", \"0.345\", \"+\", \"(\", \"-\", \"0.345\", `
-                `\")\", \"+\", \"0.345\", \"+\", "
-    done_expr=$unary_expr$done_expr
+    # unary_expr="\"-\", \"0.345\", \"+\", \"0.345\", \"+\", \"(\", \"-\", \"0.345\", `
+    #             `\")\", \"+\", \"0.345\", \"+\", "
+    # done_expr=$unary_expr$done_expr
     echo "$done_expr" | sed 's/ $//' | sed 's/,$//' >> fn.txt
     echo "$done_expr" | tr -d , | tr -d \" | tr -d ' ' >> fn_str.txt
 done

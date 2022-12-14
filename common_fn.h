@@ -20,9 +20,12 @@
 #define VAR_NOT_DEFINED 6
 #define TOO_LONG 7
 #define MATH_DOMAIN_ERROR 8
+#define WRONG_EXPRESSION_PARSER 9
 
-#define ERRORS {"", "Failure", "Wrong expression", "Calculation error", "NaN",\
-                "Division by zero", "Variable isn't defined", "Too long weird result", "math domain error"}
+#define ERRORS {"", "Failure", "Wrong expression", "Calculation error",\
+                "NaN", "float division by zero", "Variable isn't defined",\
+                "math domain error", "math domain error",\
+                "invalid syntax (<string>, line 1)"}
 
 
 
