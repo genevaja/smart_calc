@@ -15,7 +15,7 @@ char *input_text(char *a) {
 int stack_init(math_fn *stack) {
   int exit_code = FAILURE;
   stack->size = 0;
-  stack->stack = (stack_t*)malloc(MAX_BUF * sizeof(stack_t));
+  stack->stack = (my_stack_t*)malloc(MAX_BUF * sizeof(my_stack_t));
   if (stack->stack != NULL) {
     for (int i = 0; i < MAX_BUF; i++) {
       stack->stack[i].data = (char*)malloc(MAX_BUF * sizeof(char));

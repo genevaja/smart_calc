@@ -65,10 +65,10 @@ typedef struct stack_unit {
   char *data;
   double value;
   int keys;
-} stack_t;
+} my_stack_t;
 
 typedef struct stack_com {
-  stack_t *stack;
+  my_stack_t *stack;
   int size;
 } math_fn;
 
